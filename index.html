@@ -747,6 +747,56 @@ justify-content: center;
       box-shadow: 0 6px 0 #b8e4ff, 0 8px 12px rgba(0,0,0,0.08);
     }
 
+    .selection-topright-group {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .selection-home-btn {
+      position: relative;
+      width: auto;
+      padding: 10px 22px;
+      background: linear-gradient(180deg, #fefeff 0%, #eef8ff 100%);
+      border: 3px solid #9ed8ff;
+      border-radius: 999px;
+      color: #4a5568;
+      font-weight: 900;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #b8e4ff, 0 6px 10px rgba(0,0,0,0.05);
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+    }
+    .selection-home-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #b8e4ff, 0 8px 12px rgba(0,0,0,0.08);
+    }
+
+    .selection-forward-btn {
+      position: relative;
+      width: auto;
+      padding: 10px 22px;
+      background: linear-gradient(180deg, #fefeff 0%, #eef8ff 100%);
+      border: 3px solid #9ed8ff;
+      border-radius: 999px;
+      color: #4a5568;
+      font-weight: 900;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #b8e4ff, 0 6px 10px rgba(0,0,0,0.05);
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+    }
+    .selection-forward-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #b8e4ff, 0 8px 12px rgba(0,0,0,0.08);
+    }
+
     .selection-heading {
       font-size: 2.2rem;
       font-weight: 900;
@@ -929,6 +979,14 @@ box-sizing: border-box;
   </style>
 </head>
 <body>
+
+<audio id="bgm-intro" src="fluxsound-cheerful-upbeat-kids-486631.mp3" loop preload="auto"></audio>
+<audio id="bgm-game" src="viacheslavstarostin-game-gaming-video-game-music-471936.mp3" loop preload="auto"></audio>
+
+<button type="button" id="music-toggle-btn" onclick="toggleMusic()" style="position:fixed;top:18px;right:18px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#ff9a9e;box-shadow:0 4px 0 #d63031;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;">
+  <span id="music-toggle-icon">🎵</span>
+</button>
+
 <div id="game-wrapper">
 <div id="title-screen">
   <img src="0.png" alt="Title Background" class="full-title-bg">
@@ -958,22 +1016,30 @@ box-sizing: border-box;
 
   <div id="category-container">
     <button class="selection-back-btn" onclick="goBackFromCategory()">뒤로</button>
+    <div class="selection-topright-group">
+      <button class="selection-home-btn" onclick="goHomeFromSelection()">처음으로</button>
+      <button class="selection-forward-btn" onclick="forwardFromCategory()">앞으로</button>
+    </div>
     <h2 class="selection-heading">원하는 주제를 선택하세요</h2>
     <div class="grid-menu">
-      <button class="menu-box-btn disabled">숫자와 색깔<span>Number & Color</span></button>
-      <button class="menu-box-btn disabled">사람과 동물<span>People & Animal</span></button>
-      <button class="menu-box-btn disabled">취미와 직업<span>Hobby & Job</span></button>
-      <button class="menu-box-btn disabled">음식<span>Food</span></button>
-      <button class="menu-box-btn disabled">국가와 자연<span>Country & Nature</span></button>
-      <button class="menu-box-btn disabled">장소와 교통<span>Transportation</span></button>
-      <button class="menu-box-btn" onclick="selectCategory('Things')">물건<span>Things</span></button>
-      <button class="menu-box-btn disabled">동작<span>Action</span></button>
-      <button class="menu-box-btn disabled">특징과 감정<span>Conditions</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('숫자·색깔·시간')">숫자·색깔·시간<span>Number, Color & Time</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('사람과 동물')">사람과 동물<span>People & Animal</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('취미·과목·직업')">취미·과목·직업<span>Hobby, Subject & Job</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('음식과 음료')">음식과 음료<span>Food & Drink</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('국가와 자연')">국가와 자연<span>Country, Nature & Weather</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('장소·교통·방향')">장소·교통·방향<span>Place, Transportation & Direction</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('물건')">물건<span>Things</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('동작')">동작<span>Action</span></button>
+      <button class="menu-box-btn" onclick="selectCategory('특징과 감정')">특징과 감정<span>Character & Feeling</span></button>
     </div>
   </div>
 
 <div id="subcategory-container">
     <button class="selection-back-btn" onclick="goBackFromSubcategory()">뒤로</button>
+    <div class="selection-topright-group">
+      <button class="selection-home-btn" onclick="goHomeFromSelection()">처음으로</button>
+      <button class="selection-forward-btn" onclick="forwardFromSubcategory()">앞으로</button>
+    </div>
     <h2 class="selection-heading">주제를 선택하세요.</h2>
         <div id="all-btn-area" style="width: 100%; display: flex; justify-content: center; margin-bottom: 5px;"></div>
         <div class="grid-menu" id="subcategory-menu-grid"></div>
@@ -1026,21 +1092,132 @@ box-sizing: border-box;
   <div id="center-feedback" class="center-feedback"></div>
 
   <script>
+    /* ================= BACKGROUND MUSIC ================= */
+    const bgmTracks = {
+        intro: document.getElementById('bgm-intro'), // 타이틀/How to Play/대분류/소분류 화면
+        game: document.getElementById('bgm-game')    // 실제 게임 화면부터
+    };
+    let currentBgmKey = 'intro';
+    let trackMuted = { intro: false, game: false };
+    let audioUnlocked = false;
+
+    function syncBgmAudio(audio) {
+        if (!audio) return;
+        audio.muted = !audioUnlocked;
+    }
+
+    function updateMusicIcon() {
+        const icon = document.getElementById('music-toggle-icon');
+        if (icon) icon.textContent = trackMuted[currentBgmKey] ? '🔇' : '🎵';
+    }
+
+    function tryPlayCurrentBgm() {
+        const audio = bgmTracks[currentBgmKey];
+        if (!audio) return;
+        if (trackMuted[currentBgmKey]) { audio.pause(); return; }
+        syncBgmAudio(audio);
+        if (audio.paused) audio.play().catch(() => {});
+    }
+
+    function playBgm(key) {
+        if (currentBgmKey === key) return;
+        currentBgmKey = key;
+        Object.keys(bgmTracks).forEach(k => {
+            const audio = bgmTracks[k];
+            if (k === key) {
+                audio.currentTime = 0;
+                if (!trackMuted[key]) { syncBgmAudio(audio); audio.play().catch(() => {}); }
+            } else {
+                audio.pause();
+            }
+        });
+        updateMusicIcon();
+    }
+
+    function toggleMusic() {
+        trackMuted[currentBgmKey] = !trackMuted[currentBgmKey];
+        const audio = bgmTracks[currentBgmKey];
+        if (trackMuted[currentBgmKey]) {
+            audio.pause();
+        } else {
+            syncBgmAudio(audio);
+            audio.play().catch(() => {});
+        }
+        updateMusicIcon();
+    }
+
+    function initBgm() {
+        tryPlayCurrentBgm();
+        updateMusicIcon();
+        const unlockAudio = () => {
+            audioUnlocked = true;
+            tryPlayCurrentBgm();
+            document.removeEventListener('pointerdown', unlockAudio);
+            document.removeEventListener('keydown', unlockAudio);
+            document.removeEventListener('touchstart', unlockAudio);
+        };
+        document.addEventListener('pointerdown', unlockAudio);
+        document.addEventListener('keydown', unlockAudio);
+        document.addEventListener('touchstart', unlockAudio);
+    }
+    window.addEventListener('load', initBgm);
+
     /* ==========================================================================
        [데이터 교체 및 확장] 기획서 3p 샘플 타겟 '물건(Things)' 하위 36단어 전면 세팅
        ========================================================================== */
     const RAW_CATEGORY_DATA = {
-      "Things": {
-        "School": ["textbook", "pencil", "eraser", "glue stick", "notebook", "ruler", "scissors", "pencil case", "backpack", "crayon", "computer", "board"],
-        "House": ["door", "window", "bed", "chair", "desk", "clock", "robot", "doll", "umbrella", "fan", "lamp", "sofa"],
-        "Clothing": ["cap", "hat", "jacket", "dress", "skirt", "pants", "shoes", "gloves", "glasses", "socks", "shirt", "scarf"]
+      "숫자·색깔·시간": {
+        "Number": ["seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety", "hundred", "thousand"],
+        "Color": ["blue", "purple", "brown", "gray", "pink", "color", "rainbow"],
+        "Time & Date": ["evening", "night", "time", "today", "tomorrow", "yesterday", "weekend", "noon", "season", "future", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "spring", "summer", "fall", "winter"]
+      },
+      "사람과 동물": {
+        "Body": ["neck", "hair", "head", "foot", "finger", "leg", "arm", "skin", "hand"],
+        "Family & People": ["parents", "uncle", "aunt", "cousin", "baby", "child", "boy", "girl", "man", "woman"],
+        "Animal": ["elephant", "fish", "fox", "frog", "giraffe", "horse", "kangaroo", "lion", "monkey", "mouse", "octopus", "panda", "pig", "rabbit", "shark", "sheep", "tiger", "zebra"]
+      },
+      "취미·과목·직업": {
+        "Sports & Hobby": ["taekwondo", "swimming", "skating", "skiing", "camping", "hiking", "drawing", "painting", "cooking", "picnic"],
+        "Subject & Class": ["Music", "P.E.", "subject", "class", "lesson", "homework", "test", "vacation", "grade"],
+        "Job": ["teacher", "actor", "scientist", "photographer", "firefighter", "police officer", "writer", "dentist", "zookeeper", "designer", "astronaut", "farmer", "driver"]
+      },
+      "음식과 음료": {
+        "Fruit & Vegetable": ["strawberry", "peach", "pear", "melon", "potato", "tomato", "carrot", "corn", "onion"],
+        "Meal & Snack": ["cookie", "hamburger", "pizza", "salad", "sandwich", "spaghetti", "steak", "egg", "soup", "meat", "noodles", "candy"],
+        "Drink & Taste": ["sweet", "salty", "sour", "bitter", "spicy", "sugar", "salt", "taste", "delicious"]
+      },
+      "국가와 자연": {
+        "Country": ["Thailand", "India", "Italy", "France", "Spain", "Germany", "Sweden", "Canada", "Mexico", "Argentina", "Brazil", "Australia"],
+        "Nature": ["river", "sea", "beach", "lake", "grass", "sky", "star", "sun", "moon", "space", "air", "sand", "rose"],
+        "Weather": ["windy", "foggy", "lightning", "storm", "snowman", "ice", "snow", "rain", "wind", "hot", "cold", "cool", "warm", "dry"]
+      },
+      "장소·교통·방향": {
+        "Place": ["hospital", "library", "park", "school", "museum", "airport", "church", "police station", "fire station", "zoo", "living room", "bedroom", "bathroom", "kitchen", "garden", "classroom", "playground", "farm"],
+        "Transportation": ["subway", "airplane", "flight", "ship", "boat", "fire truck"],
+        "Direction & Position": ["behind", "under", "over", "top", "bottom", "middle", "near", "next to", "between", "inside", "outside", "here", "there", "around", "corner"]
+      },
+      "물건": {
+        "School Supplies": ["ruler", "scissors", "glue stick", "crayon", "board", "map", "paper", "computer", "bag", "backpack"],
+        "Household": ["sofa", "clock", "lamp", "fan", "mirror", "sink", "stair", "towel", "toothbrush", "cup", "plate", "spoon", "fork", "box", "key", "phone", "doll", "robot", "umbrella", "present", "guitar", "basket"],
+        "Clothing": ["sweater", "dress", "skirt", "pants", "hairpin", "socks", "shoes", "sunglasses", "gloves", "scarf", "belt", "ring", "glasses"]
+      },
+      "동작": {
+        "Daily Action": ["open", "close", "sit", "stand", "read", "write", "study", "clean", "make", "use", "do", "help", "watch"],
+        "Move & Play": ["ride", "play", "dance", "move", "enter", "catch", "kick", "throw", "climb", "push", "pull", "turn", "stop", "exercise", "pick", "touch", "grow"],
+        "Talk & Feel": ["listen", "sing", "meet", "visit", "give", "thank", "welcome", "like", "want", "know", "think", "love", "see", "look", "smile", "cry", "laugh"]
+      },
+      "특징과 감정": {
+        "Look": ["slim", "fat", "thin", "heavy", "light", "strong", "weak", "straight", "curly", "pretty", "cute", "beautiful", "young", "old"],
+        "Character": ["smart", "quiet", "honest", "lazy"],
+        "Feeling": ["tired", "sleepy", "hungry", "thirsty", "sick", "busy", "surprised", "afraid"]
       }
     };
 const CATEGORY_DATA = {};
 for (const cat in RAW_CATEGORY_DATA) {
   CATEGORY_DATA[cat] = {};
   for (const subCat in RAW_CATEGORY_DATA[cat]) {
-    CATEGORY_DATA[cat][subCat] = RAW_CATEGORY_DATA[cat][subCat].filter(word => !word.includes(" "));
+    // 공백 포함 단어(칸에 못 들어감)와, 10x10 격자에 배치할 수 없는 10자 초과 단어는 미리 제외
+    CATEGORY_DATA[cat][subCat] = RAW_CATEGORY_DATA[cat][subCat].filter(word => !word.includes(" ") && word.length <= 10);
   }
 }
     // 실제 게임에서 사용될 유동적 최종 단어 풀
@@ -1137,6 +1314,27 @@ function hideIntroHelpView() {
     function goBackFromSubcategory() {
       document.getElementById("subcategory-container").style.display = "none";
       document.getElementById("category-container").style.display = "flex";
+    }
+
+    // [추가] 대분류/소분류 화면 공용 '처음으로' 버튼 - 어느 단계에서든 타이틀 화면으로 바로 이동
+    function goHomeFromSelection() {
+      document.getElementById("category-container").style.display = "none";
+      document.getElementById("subcategory-container").style.display = "none";
+      document.getElementById("title-screen").style.display = "flex";
+    }
+
+    // [추가] 대분류 화면 '앞으로' 버튼 - 이미 골랐던 대분류가 있으면 그 소분류 화면으로 다시 이동
+    function forwardFromCategory() {
+      if (!selectedCategoryName) {
+        alert("먼저 주제를 선택해 주세요!");
+        return;
+      }
+      selectCategory(selectedCategoryName);
+    }
+
+    // [추가] 소분류 화면 '앞으로' 버튼 - 하단 Game Start 버튼과 동일하게 게임 시작
+    function forwardFromSubcategory() {
+      launchGameAfterSelection();
     }
 
  function selectCategory(category) {
@@ -1237,6 +1435,7 @@ function hideIntroHelpView() {
       document.getElementById("subcategory-container").style.display = "none";
       document.getElementById("game-header").style.display = "flex";
       document.getElementById("game-body").style.display = "flex";
+      playBgm('game');
       resetRound();
     }
 
