@@ -1011,6 +1011,7 @@ box-sizing: border-box;
 
     <div class="title-btn-group">
       <button class="start-btn" onclick="hideIntroHelpView()">닫기</button>
+      <button class="start-btn" onclick="startGameFromIntroHelp()">Game Start</button>
     </div>
   </div>
 
@@ -1259,6 +1260,12 @@ function openHelpFromTitle() {
 function hideIntroHelpView() {
   document.getElementById("intro-container").style.display = "none";
   document.getElementById("title-screen").style.display = "flex";
+}
+
+// [추가] How to Play 화면에서 학습목표·게임방법 확인 후 바로 Game Start로 이동
+function startGameFromIntroHelp() {
+  document.getElementById("intro-container").style.display = "none";
+  document.getElementById("category-container").style.display = "flex";
 }
     function playSound(type) {
       if (audioCtx.state === 'suspended') {
