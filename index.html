@@ -989,6 +989,10 @@ box-sizing: border-box;
   <span id="music-toggle-icon">🎵</span>
 </button>
 
+<button type="button" id="fullscreen-toggle-btn" onclick="toggleFullscreen()" style="position:fixed;top:18px;right:80px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#4fc3f7;box-shadow:0 4px 0 #0288d1;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;">
+  <span id="fullscreen-toggle-icon">⛶</span>
+</button>
+
 <div id="game-wrapper">
 <div id="title-screen">
   <img src="0.png" alt="Title Background" class="full-title-bg">
@@ -1164,6 +1168,20 @@ box-sizing: border-box;
         document.addEventListener('touchstart', unlockAudio);
     }
     window.addEventListener('load', initBgm);
+
+    /* ================= FULLSCREEN ================= */
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+        } else if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+    function updateFullscreenIcon() {
+        const icon = document.getElementById('fullscreen-toggle-icon');
+        if (icon) icon.textContent = document.fullscreenElement ? '❐' : '⛶';
+    }
+    document.addEventListener('fullscreenchange', updateFullscreenIcon);
 
     /* ==========================================================================
        [데이터 교체 및 확장] 기획서 3p 샘플 타겟 '물건(Things)' 하위 36단어 전면 세팅
