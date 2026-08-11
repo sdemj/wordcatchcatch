@@ -496,13 +496,47 @@ align-items: center;
 
 #modal-overlay {
   position: fixed;     /* 👈 브라우저 화면 전체를 기준으로 고정 */
-  top: 0; 
-  left: 0; 
+  top: 0;
+  left: 0;
   width: 100vw;        /* 👈 가로 화면 100% */
   height: 100vh;       /* 👈 세로 화면 100% */
-  background-color: #f0faff; 
+  background-color: rgba(30, 40, 65, 0.68);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: none;
+  align-items: center;
+  justify-content: center;
   z-index: 9999;       /* 👈 게임 화면의 그 어떤 요소보다 위에 오도록 설정 */
+}
+
+.result-stats {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.result-stat-tile {
+  background: #f0faff;
+  border: 3px solid #cfe9ff;
+  border-radius: 18px;
+  padding: 14px 20px;
+  min-width: 92px;
+}
+
+.result-stat-num {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #0288d1;
+  white-space: nowrap;
+}
+
+.result-stat-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #888;
+  margin-top: 2px;
 }
 
 .modal-content {
@@ -993,6 +1027,24 @@ box-sizing: border-box;
   <span id="fullscreen-toggle-icon">⛶</span>
 </button>
 
+<!-- 실제 게임 화면에서만 표시되는 홈/뒤로 버튼 (음악·전체화면 버튼과 대칭되는 왼쪽 위 위치) -->
+<button type="button" id="game-back-btn" onclick="exitGameToSubcategory()" style="display:none;position:fixed;top:18px;left:18px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#ffb74d;box-shadow:0 4px 0 #f57c00;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;" title="뒤로">
+  ◀
+</button>
+
+<button type="button" id="game-home-btn" onclick="exitGameToHome()" style="display:none;position:fixed;top:18px;left:80px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#66bb6a;box-shadow:0 4px 0 #388e3c;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;" title="처음으로">
+  🏠
+</button>
+
+<!-- game-wrapper 밖(뷰포트 기준)에 둬서 게임 화면 축소 배율의 영향을 받지 않도록 함 -->
+<div id="modal-overlay">
+  <div class="modal-content" id="modal-content">
+    <h3 id="modal-title">Round Clear!</h3>
+    <div id="modal-body" style="display: none;"></div>
+    <button class="next-btn" id="modal-button" onclick="goToNextRound()">Next Round!</button>
+  </div>
+</div>
+
 <div id="game-wrapper">
 <div id="title-screen">
   <img src="0.png" alt="Title Background" class="full-title-bg">
@@ -1058,14 +1110,6 @@ box-sizing: border-box;
   <div class="challenge-title">Word Catch! Catch!</div>
   <div id="round-display">
     ROUND <span class="current-idx">1</span><span class="total-idx">/ 3</span>
-  </div>
-</div>
-
-<div id="modal-overlay">
-  <div class="modal-content" id="modal-content">
-    <h3 id="modal-title">Round Clear!</h3>
-    <div id="modal-body" style="display: none;"></div>
-    <button class="next-btn" id="modal-button" onclick="goToNextRound()">Next Round!</button>
   </div>
 </div>
 
@@ -1170,18 +1214,30 @@ box-sizing: border-box;
     window.addEventListener('load', initBgm);
 
     /* ================= FULLSCREEN ================= */
+    // iOS Safari는 일반 요소의 전체화면 API 자체를 지원하지 않아 아래 폴백으로도 해결되지 않음.
+    // 구형 안드로이드 브라우저/인앱 웹뷰 대응용 webkit 접두사 폴백만 추가.
+    function getFullscreenElement() {
+        return document.fullscreenElement || document.webkitFullscreenElement;
+    }
     function toggleFullscreen() {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(() => {});
-        } else if (document.exitFullscreen) {
-            document.exitFullscreen();
+        const el = document.documentElement;
+        if (!getFullscreenElement()) {
+            const request = el.requestFullscreen || el.webkitRequestFullscreen;
+            if (request) {
+                const result = request.call(el);
+                if (result && result.catch) result.catch(() => {});
+            }
+        } else {
+            const exit = document.exitFullscreen || document.webkitExitFullscreen;
+            if (exit) exit.call(document);
         }
     }
     function updateFullscreenIcon() {
         const icon = document.getElementById('fullscreen-toggle-icon');
-        if (icon) icon.textContent = document.fullscreenElement ? '❐' : '⛶';
+        if (icon) icon.textContent = getFullscreenElement() ? '❐' : '⛶';
     }
     document.addEventListener('fullscreenchange', updateFullscreenIcon);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
 
     /* ==========================================================================
        [데이터 교체 및 확장] 기획서 3p 샘플 타겟 '물건(Things)' 하위 36단어 전면 세팅
@@ -1256,6 +1312,9 @@ for (const cat in RAW_CATEGORY_DATA) {
 const MAX_ROUND = 3;
 
     let wordStartPositions = new Map();
+    let totalWordsFoundAll = 0, hintsUsedTotal = 0;
+    let gameStartTime = 0;
+    let usedWords = new Set();
 
     const INITIAL_TIME = 240;
     let timeLeft = INITIAL_TIME;
@@ -1330,6 +1389,38 @@ function startGameFromIntroHelp() {
         gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
         osc.start(audioCtx.currentTime);
         osc.stop(audioCtx.currentTime + 0.05);
+      } else if (type === 'clear') {
+        // 라운드 클리어: 밝은 3음 상승 아르페지오
+        osc.type = 'triangle';
+        const now = audioCtx.currentTime;
+        [523.25, 659.25, 783.99].forEach((freq, i) => {
+          osc.frequency.setValueAtTime(freq, now + i * 0.11);
+        });
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.55);
+        osc.start(now);
+        osc.stop(now + 0.55);
+      } else if (type === 'complete') {
+        // 미션 컴플리트: 더 화려한 4음 팡파레
+        osc.type = 'triangle';
+        const now = audioCtx.currentTime;
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+          osc.frequency.setValueAtTime(freq, now + i * 0.13);
+        });
+        gain.gain.setValueAtTime(0.35, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.85);
+        osc.start(now);
+        osc.stop(now + 0.85);
+      } else if (type === 'gameover') {
+        // 타임오버: 낮게 떨어지는 아쉬운 톤
+        osc.type = 'sawtooth';
+        const now = audioCtx.currentTime;
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(80, now + 0.6);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.65);
+        osc.start(now);
+        osc.stop(now + 0.65);
       }
     }
 
@@ -1459,11 +1550,46 @@ function startGameFromIntroHelp() {
       });
 
       // UI 전환 후 오리지널 게임 실행 구조 그대로 연결
+      round = 1;
+      timeLeft = INITIAL_TIME;
+      totalWordsFoundAll = 0;
+      hintsUsedTotal = 0;
+      gameStartTime = Date.now();
+      usedWords.clear();
       document.getElementById("subcategory-container").style.display = "none";
       document.getElementById("game-header").style.display = "flex";
       document.getElementById("game-body").style.display = "flex";
+      showGameNavButtons(true);
       playBgm('game');
       resetRound();
+    }
+
+    // 실제 게임 화면 전용 홈/뒤로 버튼 표시 토글
+    function showGameNavButtons(show) {
+      document.getElementById("game-back-btn").style.display = show ? "flex" : "none";
+      document.getElementById("game-home-btn").style.display = show ? "flex" : "none";
+    }
+
+    // 게임 중 '처음으로': 타이머 정지 후 타이틀 화면으로 이동
+    function exitGameToHome() {
+      if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+      closeModal();
+      document.getElementById("game-header").style.display = "none";
+      document.getElementById("game-body").style.display = "none";
+      showGameNavButtons(false);
+      document.getElementById("title-screen").style.display = "flex";
+      playBgm('intro');
+    }
+
+    // 게임 중 '뒤로': 타이머 정지 후 소분류 선택 화면으로 이동
+    function exitGameToSubcategory() {
+      if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+      closeModal();
+      document.getElementById("game-header").style.display = "none";
+      document.getElementById("game-body").style.display = "none";
+      showGameNavButtons(false);
+      document.getElementById("subcategory-container").style.display = "flex";
+      playBgm('intro');
     }
 
     /* ==========================================================================
@@ -1554,6 +1680,39 @@ document.getElementById("round-display").innerHTML = `ROUND <span class="current
       }, 800);
     }
 
+function getTotalPossibleWords() {
+  let total = 0;
+  for (let r = 1; r <= MAX_ROUND; r++) total += 1 + r * 2;
+  return total;
+}
+
+function formatElapsedTime() {
+  const elapsedSec = Math.max(0, Math.round((Date.now() - gameStartTime) / 1000));
+  const m = Math.floor(elapsedSec / 60);
+  const s = elapsedSec % 60;
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
+}
+
+function renderResultStats() {
+  const totalPossible = getTotalPossibleWords();
+  return `
+    <div class="result-stats">
+      <div class="result-stat-tile">
+        <div class="result-stat-num">${formatElapsedTime()}</div>
+        <div class="result-stat-label">총 소요 시간</div>
+      </div>
+      <div class="result-stat-tile">
+        <div class="result-stat-num">${totalWordsFoundAll}/${totalPossible}</div>
+        <div class="result-stat-label">찾은 단어</div>
+      </div>
+      <div class="result-stat-tile">
+        <div class="result-stat-num">${hintsUsedTotal}회</div>
+        <div class="result-stat-label">힌트 사용</div>
+      </div>
+    </div>
+  `;
+}
+
 function showModal(title, isLastRound = false, type = "clear") {
   const modalContent = document.getElementById("modal-content");
   const modalButton = document.getElementById("modal-button");
@@ -1598,19 +1757,31 @@ function showModal(title, isLastRound = false, type = "clear") {
     };
   } 
   else if (type === "gameover") {
+    modalBody.innerHTML = renderResultStats();
+    modalBody.style.display = "block";
     modalButton.textContent = "Try Again!";
     modalButton.onclick = function() {
         round = 1;
         timeLeft = INITIAL_TIME;
+        totalWordsFoundAll = 0;
+        hintsUsedTotal = 0;
+        gameStartTime = Date.now();
+        usedWords.clear();
         resetRound();
     };
-  } 
+  }
   else {
     if (isLastRound) {
+      modalBody.innerHTML = renderResultStats();
+      modalBody.style.display = "block";
       modalButton.textContent = "Play Again!";
       modalButton.onclick = function() {
           round = 1;
           timeLeft = INITIAL_TIME;
+          totalWordsFoundAll = 0;
+          hintsUsedTotal = 0;
+          gameStartTime = Date.now();
+          usedWords.clear();
           resetRound();
       };
     } else {
@@ -1639,30 +1810,73 @@ document.getElementById("game-header").style.display = "flex";
 
     function gameOver() {
       setTimeout(() => {
+        playSound('gameover');
         showModal("Time Over! ", false, "gameover");
       }, 100);
     }
 
+    // 한 단어가 다른 단어를 포함하는 경우(예: week/weekend) 같은 라운드에 함께 나오면
+    // 그리드에서 두 단어가 겹쳐 보여 헷갈리므로 그런 조합은 피한다.
+    function wordsOverlap(a, b) {
+      const wa = a.toLowerCase().replace(/\s/g, '');
+      const wb = b.toLowerCase().replace(/\s/g, '');
+      if (wa === wb) return true;
+      return wa.includes(wb) || wb.includes(wa);
+    }
+
     function pickRandomWords(count) {
       const safeCount = Math.min(count, ALL_WORDS.length);
-      const shuffled = [...ALL_WORDS].sort(() => 0.5 - Math.random());
-      return shuffled.slice(0, safeCount);
+
+      // 아직 다른 라운드에 나오지 않은 단어를 우선 후보로 삼아
+      // 라운드 간 단어가 최대한 겹치지 않게 하고, 부족할 때만 이미 나온 단어를 재사용한다.
+      const unused = ALL_WORDS.filter(w => !usedWords.has(w));
+      const used = ALL_WORDS.filter(w => usedWords.has(w));
+      const shuffle = arr => [...arr].sort(() => 0.5 - Math.random());
+      const candidates = [...shuffle(unused), ...shuffle(used)];
+
+      const picked = [];
+      for (const w of candidates) {
+        if (picked.length >= safeCount) break;
+        if (picked.some(p => wordsOverlap(p, w))) continue;
+        picked.push(w);
+      }
+      // 겹침 회피 탓에 개수가 부족하면(단어 풀이 아주 작은 경우) 남은 후보로 채운다.
+      if (picked.length < safeCount) {
+        for (const w of candidates) {
+          if (picked.length >= safeCount) break;
+          if (!picked.includes(w)) picked.push(w);
+        }
+      }
+
+      picked.forEach(w => usedWords.add(w));
+      return picked;
     }
 
     function generateGrid() {
 gridData = Array(rows).fill(null).map(() => Array(cols).fill(null));
       const directions = [[0, 1], [1, 0], [1, 1]];
       wordStartPositions.clear();
-     
-      for (let word of currentWords) {
+
+      // 가로/세로/대각선 방향을 단어 수만큼 최대한 고르게 배정한 뒤 섞는다
+      // (완전 무작위 방식은 단어 수가 적은 라운드에서 한쪽 방향으로 쏠릴 수 있음)
+      const dirAssignment = currentWords.map((_, i) => directions[i % directions.length]);
+      for (let i = dirAssignment.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [dirAssignment[i], dirAssignment[j]] = [dirAssignment[j], dirAssignment[i]];
+      }
+
+      for (let idx = 0; idx < currentWords.length; idx++) {
+        const word = currentWords[idx];
         let placed = false, attempts = 0;
         const targetWord = word.toLowerCase();
+        const preferredDir = dirAssignment[idx];
         while (!placed && attempts < 500) {
-          const [dr, dc] = directions[Math.floor(Math.random() * directions.length)];
+          // 배정된 방향으로 먼저 시도하고, 자리가 없으면 다른 방향으로 대체
+          const [dr, dc] = attempts < 200 ? preferredDir : directions[Math.floor(Math.random() * directions.length)];
           const r = Math.floor(Math.random() * rows), c = Math.floor(Math.random() * cols);
           if (canPlace(targetWord, r, c, dr, dc)) {
             for (let i = 0; i < targetWord.length; i++) { gridData[r + dr * i][c + dc * i] = targetWord[i]; }
-           
+
             wordStartPositions.set(word, { r, c });
             placed = true;
           }
@@ -1783,6 +1997,7 @@ function checkWord() {
         if (!foundWords.has(matchWord)) {
             playSound('correct');
             foundWords.add(matchWord);
+            totalWordsFoundAll++;
             timeLeft += 20;
             showTimerFeedback("+20초");
             const colorIndex = wordColors[matchIndex];
@@ -1792,14 +2007,18 @@ function checkWord() {
             currentSelection = [];
             
             if (foundWords.size === currentWords.length) {
-                if (round >= MAX_ROUND) { 
+                if (round >= MAX_ROUND) {
                     setTimeout(() => {
+                        playSound('complete');
                         showModal("Mission Complete! 🏆", true, "clear");
                         clearInterval(timerInterval);
                         timerInterval = null;
                     }, 500);
                 } else {
-                    setTimeout(() => { showModal("Round " + round + " Clear!", false, "clear"); }, 500);
+                    setTimeout(() => {
+                        playSound('clear');
+                        showModal("Round " + round + " Clear!", false, "clear");
+                    }, 500);
                 }
             }
         }
@@ -1820,6 +2039,7 @@ function useHint() {
     const remainingWords = currentWords.filter(w => !foundWords.has(w));
     if (remainingWords.length === 0) return;
 
+    hintsUsedTotal++;
     playSound('hint');
     timeLeft -= 10;
     showTimerFeedback("-10초");
