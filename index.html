@@ -4,6 +4,31 @@
   <meta charset="UTF-8" />
   <title>Word Catch! Catch!</title>
   <style>
+@font-face {
+  font-family: 'Hakgyoansim_BoardmarkerR';
+  src: url('fonts/Hakgyoansim_BoardmarkerR.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hakgyoansim_PosterB';
+  src: url('fonts/Hakgyoansim_PosterB.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body, button, input, textarea {
+  font-family: 'Hakgyoansim_BoardmarkerR', 'Nanum Gothic', sans-serif;
+}
+
+.intro-title, .challenge-title, .selection-heading, .modal-content h3,
+.word-box h2, #round-display, .start-btn, .intro-how-btn, .next-btn,
+.menu-box-btn, .modal-button, #modal-button {
+  font-family: 'Hakgyoansim_PosterB', 'Nanum Gothic', sans-serif;
+}
+
 #title-screen {
   position: relative;
   width: 95%;
@@ -35,8 +60,10 @@
   position: relative;
   z-index: 2;
   display: flex;
+  flex-wrap: wrap;
   gap: 25px;
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
+  justify-content: center;
 }
 
 /* 2. 하얀색으로 빛나고 깜빡이는 학습 목표 스타일 */
@@ -96,9 +123,10 @@ box-sizing: border-box;
 
     .intro-title {
       color: #1a2b4a;
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       letter-spacing: 1.25px;
+      text-align: center;
     }
 
 .intro-box {
@@ -273,25 +301,28 @@ box-sizing: border-box;
       width: 95% !important;
       max-width: 1200px;
       display: none;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 31px;
-      margin: 19px auto 31px;
+      gap: 8px;
+      margin: clamp(8px, 1.5vh, 19px) auto clamp(10px, 2vh, 22px);
     }
 
+    /* [수정] 헤더의 'Word Catch' 타이틀은 시선을 덜 끌도록 작고 단순하게, 항상 중앙 정렬 */
     .challenge-title {
-      padding: 19px 50px;
+      padding: 8px 26px;
       background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 25%, #fbc2eb 50%, #a1c4fd 75%, #c2e9fb 100%);
       background-size: 200% auto;
-      animation: gradientMove 3s linear infinite;
+      animation: gradientMove 4s linear infinite;
       color: white;
-      font-size: 2.75rem;
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
       font-weight: 900;
-      border-radius: 75px;
-      box-shadow: 0 10px 0 #e08588, 0 19px 31px rgba(0, 0, 0, 0.1);
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.15);
-      letter-spacing: 1.25px;
-      border: 5px solid white;
+      border-radius: 40px;
+      box-shadow: 0 4px 0 #e08588, 0 6px 10px rgba(0, 0, 0, 0.1);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+      letter-spacing: 0.5px;
+      border: 3px solid white;
+      text-align: center;
     }
 
     @keyframes gradientMove {
@@ -334,11 +365,23 @@ box-sizing: border-box;
       box-sizing: border-box;
     }
 
+    /* [추가] 라운드 타이머를 라운드 표시보다 더 눈에 띄게 강조: word-box 상단에 크게 배치 */
+    .timer-circle-box.timer-prominent {
+      width: clamp(80px, 9vw, 108px);
+      height: clamp(80px, 9vw, 108px);
+      margin: 0 auto 4px;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+    }
+    .timer-circle-box.timer-prominent #timer-text {
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+    }
+
     .main-game-container {
       display: none;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      gap: 50px;
+      gap: clamp(20px, 4vw, 50px);
       margin-top: 2px;
 width: 95% !important;
       max-width: 1200px;
@@ -350,12 +393,13 @@ width: 95% !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .btn-group {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
   align-items: center;
 }
@@ -447,7 +491,14 @@ width: 95% !important;
     }
 
 #timer-text {
-      position: relative; /* flex 정렬을 따르도록 구조 변경 */
+      position: absolute;  /* [수정] 부모 박스를 기준으로 절대 배치하여 PC/브라우저에서도 항상 정중앙 고정 */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 900;   /* 숫자가 더 잘 보이도록 두께 조정 */
       font-size: 1.25rem; /* 시인성을 위해 크기 살짝 확대 */
       color: #333;
@@ -455,6 +506,7 @@ width: 95% !important;
       text-align: center;
       user-select: none;
       z-index: 2;         /* 원형 그래프보다 항상 위에 보이도록 설정 */
+      box-sizing: border-box;
     }
     .word-box {
       width: 210px;
@@ -569,7 +621,7 @@ overflow-y: auto;
   max-width: 1020px;
 }
 
-    .modal-content h3 { color: #ff7043; font-size: 2.8rem; margin: 0 0 15px; font-weight: 900; }
+    .modal-content h3 { color: #ff7043; font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin: 0 0 15px; font-weight: 900; text-align: center; }
 
     /* How to Play 팝업 전용: 인트로 화면 How to Play와 동일한 배경/제목 색상 */
     .modal-content.modal-help-style {
@@ -581,9 +633,55 @@ overflow-y: auto;
     }
     .modal-content.modal-help-style h3 {
       color: #1a2b4a;
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       letter-spacing: 1.25px;
+    }
+
+    /* [추가] 성공(라운드클리어/미션컴플리트) vs 실패(타임오버) 팝업 색상 구분 */
+    .modal-content.modal-success {
+      border-color: #66bb6a;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 5px 0 #a5d6a7;
+    }
+    .modal-content.modal-success h3 { color: #2e7d32; }
+    .modal-content.modal-fail {
+      border-color: #ef5350;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 5px 0 #ffab91;
+    }
+    .modal-content.modal-fail h3 { color: #c62828; }
+
+    /* [추가] 라운드 클리어 축하 컨페티 효과 */
+    #confetti-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 10000;
+      overflow: hidden;
+    }
+    .confetti-piece {
+      position: absolute;
+      top: -20px;
+      width: 10px;
+      height: 16px;
+      opacity: 0.9;
+      animation: confettiFall linear forwards;
+      border-radius: 2px;
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(540deg); opacity: 0.4; }
+    }
+
+    /* [추가] 최종 미션 성공 화면의 고양이 캐릭터 연출 */
+    .result-cat {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      text-align: center;
+      animation: catBounce 1.2s ease-in-out infinite;
+    }
+    @keyframes catBounce {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-10px) rotate(4deg); }
     }
    
     .next-btn {
@@ -832,10 +930,11 @@ justify-content: center;
     }
 
     .selection-heading {
-      font-size: 2.8rem;
+      font-size: clamp(1.6rem, 4.5vw, 2.8rem);
       font-weight: 900;
       color: #1a8fe3;
       margin: 0;
+      text-align: center;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
 
@@ -1016,8 +1115,8 @@ box-sizing: border-box;
 </head>
 <body>
 
-<audio id="bgm-intro" src="fluxsound-cheerful-upbeat-kids-486631.mp3" loop preload="auto"></audio>
-<audio id="bgm-game" src="viacheslavstarostin-game-gaming-video-game-music-471936.mp3" loop preload="auto"></audio>
+<audio id="bgm-intro" src="fluxsound-cheerful-upbeat-kids-486631.mp3" loop preload="none"></audio>
+<audio id="bgm-game" src="viacheslavstarostin-game-gaming-video-game-music-471936.mp3" loop preload="none"></audio>
 
 <button type="button" id="music-toggle-btn" onclick="toggleMusic()" style="position:fixed;top:18px;right:18px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#ff9a9e;box-shadow:0 4px 0 #d63031;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;">
   <span id="music-toggle-icon">🎵</span>
@@ -1036,6 +1135,9 @@ box-sizing: border-box;
   🏠
 </button>
 
+<!-- [추가] 라운드 클리어 축하 컨페티가 뿌려질 전체 화면 오버레이 (클릭 통과, 항상 최상단) -->
+<div id="confetti-container"></div>
+
 <!-- game-wrapper 밖(뷰포트 기준)에 둬서 게임 화면 축소 배율의 영향을 받지 않도록 함 -->
 <div id="modal-overlay">
   <div class="modal-content" id="modal-content">
@@ -1050,7 +1152,7 @@ box-sizing: border-box;
   <img src="0.png" alt="Title Background" class="full-title-bg">
   <div class="title-btn-group">
     <button class="start-btn intro-how-btn" onclick="openHelpFromTitle()">How to Play</button>
-    <button class="start-btn" onclick="clickStartFromTitle()">Game Start</button>
+    <button class="start-btn" onclick="clickStartFromTitle()">GAME START</button>
   </div>
 </div>
   <div id="intro-container" style="display: none;">
@@ -1063,13 +1165,13 @@ box-sizing: border-box;
         <li> 총 <b>4분</b>의 시간이 주어지며 게임이 시작되면 시간이 줄어듭니다.</li>
         <li><b>Word Box</b>에 제시된 단어들을 알파벳 퍼즐 판에서 찾습니다.</li>
         <li><b>가로, 세로, 대각선 방향</b>으로 숨겨진 단어를 찾아 철자를 순서대로 클릭합니다.</li>
-        <li>성공 시 <b>20초</b> 추가, 오답 및 힌트 사용 시 <b>10초</b>가 줄어듭니다.</li>
+        <li>정답 시 <b>'+20초'</b>, 오답 및 힌트 사용 시 <b>'-10초'</b></li>
       </ul>
     </div>
 
     <div class="title-btn-group">
       <button class="start-btn" onclick="hideIntroHelpView()">닫기</button>
-      <button class="start-btn" onclick="startGameFromIntroHelp()">Game Start</button>
+      <button class="start-btn" onclick="startGameFromIntroHelp()">GAME START</button>
     </div>
   </div>
 
@@ -1103,11 +1205,11 @@ box-sizing: border-box;
         <div id="all-btn-area" style="width: 100%; display: flex; justify-content: center; margin-bottom: 5px;"></div>
         <div class="grid-menu" id="subcategory-menu-grid"></div>
         <div class="status-counter" id="live-word-counter">0단어 선택됨</div>
-    <button class="start-btn" onclick="launchGameAfterSelection()">Game Start</button>
+    <button class="start-btn" onclick="launchGameAfterSelection()">GAME START</button>
   </div>
 
 <div class="header-container" id="game-header">
-  <div class="challenge-title">Word Catch! Catch!</div>
+  <div class="challenge-title">Word Catch</div>
   <div id="round-display">
     ROUND <span class="current-idx">1</span><span class="total-idx">/ 3</span>
   </div>
@@ -1116,21 +1218,21 @@ box-sizing: border-box;
 <div class="main-game-container" id="game-body">
 <div class="left-panel">
   <div class="btn-group">
-    <button class="buzzer-btn hint-btn" onclick="useHint()">HINT</button>
-<div class="timer-circle-box">
+    <button class="buzzer-btn hint-btn" onclick="useHint()">Hint</button>
+    <button class="how-to-play-btn" onclick="openHelp()">How to Play</button>
+  </div>
+
+    <div class="word-container">
+<div class="timer-circle-box timer-prominent">
   <svg viewBox="0 0 100 100"> <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
     <circle id="timer-circle" class="circle-progress" cx="50" cy="50" r="40"></circle>
       </svg>
       <div id="timer-text">4:00</div>
     </div>
-  </div>
-   
-    <div class="word-container">
       <div class="word-box">
         <h2> Word Box </h2>
         <div id="word-list"></div>
       </div>
-      <button class="how-to-play-btn" onclick="openHelp()">How to Play</button>
     </div>
   </div>
 
@@ -1144,65 +1246,66 @@ box-sizing: border-box;
 
   <script>
     /* ================= BACKGROUND MUSIC ================= */
-    const bgmTracks = {
-        intro: document.getElementById('bgm-intro'), // 타이틀/How to Play/대분류/소분류 화면
-        game: document.getElementById('bgm-game')    // 실제 게임 화면부터
-    };
-    let currentBgmKey = 'intro';
-    let trackMuted = { intro: false, game: false };
+    // [정책 변경] 교실에서 여러 팀이 함께 플레이하는 게임 특성상, 실제 퍼즐을 푸는 동안
+    // 계속 흘러나오는 BGM은 집중을 방해할 수 있어 타이틀/How to Play/대분류·소분류 선택
+    // 화면에서만 재생하고, 실제 게임(그리드) 화면으로 넘어가면 BGM을 정지한다.
+    // (효과음(정답/오답/힌트/라운드클리어/타임오버 등)은 그대로 유지된다.)
+    const bgmIntro = document.getElementById('bgm-intro');
+    const MUSIC_MUTE_KEY = 'wordcatch_bgm_muted';
+    // [버그 수정] 음소거 상태를 화면 전환과 무관하게 하나의 값으로 관리하고 localStorage에
+    // 저장해, 타이틀에서 음소거해도 게임 화면으로 넘어갈 때 다시 켜지지 않도록 한다.
+    let bgmMuted = (function () {
+        try { return localStorage.getItem(MUSIC_MUTE_KEY) === '1'; } catch (e) { return false; }
+    })();
     let audioUnlocked = false;
+    let bgmShouldPlay = false; // 현재 화면이 BGM 재생 대상 화면(타이틀/선택 화면)인지 여부
 
-    function syncBgmAudio(audio) {
-        if (!audio) return;
-        audio.muted = !audioUnlocked;
+    function syncBgmAudio() {
+        if (!bgmIntro) return;
+        bgmIntro.muted = !audioUnlocked;
     }
 
     function updateMusicIcon() {
         const icon = document.getElementById('music-toggle-icon');
-        if (icon) icon.textContent = trackMuted[currentBgmKey] ? '🔇' : '🎵';
+        if (icon) icon.textContent = bgmMuted ? '🔇' : '🎵';
     }
 
-    function tryPlayCurrentBgm() {
-        const audio = bgmTracks[currentBgmKey];
-        if (!audio) return;
-        if (trackMuted[currentBgmKey]) { audio.pause(); return; }
-        syncBgmAudio(audio);
-        if (audio.paused) audio.play().catch(() => {});
+    function applyBgmState() {
+        if (!bgmIntro) return;
+        if (!bgmShouldPlay || bgmMuted) {
+            bgmIntro.pause();
+            return;
+        }
+        syncBgmAudio();
+        if (bgmIntro.paused) bgmIntro.play().catch(() => {});
     }
 
-    function playBgm(key) {
-        if (currentBgmKey === key) return;
-        currentBgmKey = key;
-        Object.keys(bgmTracks).forEach(k => {
-            const audio = bgmTracks[k];
-            if (k === key) {
-                audio.currentTime = 0;
-                if (!trackMuted[key]) { syncBgmAudio(audio); audio.play().catch(() => {}); }
-            } else {
-                audio.pause();
-            }
-        });
-        updateMusicIcon();
+    // 타이틀/How to Play/대분류/소분류 선택 화면 진입 시 호출
+    function playBgm() {
+        bgmShouldPlay = true;
+        applyBgmState();
+    }
+
+    // 실제 게임(퍼즐) 화면 진입 시 호출: BGM 정지, 효과음은 영향 없음
+    function stopBgmForGameplay() {
+        bgmShouldPlay = false;
+        applyBgmState();
     }
 
     function toggleMusic() {
-        trackMuted[currentBgmKey] = !trackMuted[currentBgmKey];
-        const audio = bgmTracks[currentBgmKey];
-        if (trackMuted[currentBgmKey]) {
-            audio.pause();
-        } else {
-            syncBgmAudio(audio);
-            audio.play().catch(() => {});
-        }
+        bgmMuted = !bgmMuted;
+        try { localStorage.setItem(MUSIC_MUTE_KEY, bgmMuted ? '1' : '0'); } catch (e) {}
+        applyBgmState();
         updateMusicIcon();
     }
 
     function initBgm() {
-        tryPlayCurrentBgm();
         updateMusicIcon();
+        bgmShouldPlay = true; // 최초 진입 화면은 타이틀이므로 BGM 대상 화면
+        applyBgmState();
         const unlockAudio = () => {
             audioUnlocked = true;
-            tryPlayCurrentBgm();
+            applyBgmState();
             document.removeEventListener('pointerdown', unlockAudio);
             document.removeEventListener('keydown', unlockAudio);
             document.removeEventListener('touchstart', unlockAudio);
@@ -1255,7 +1358,7 @@ box-sizing: border-box;
       },
       "취미·과목·직업": {
         "Sports & Hobby": ["soccer", "baseball", "basketball", "badminton", "tennis", "table tennis", "taekwondo", "swimming", "skating", "skiing", "camping", "hiking", "drawing", "painting", "cooking"],
-        "Subject & Class": ["English", "Korean", "Math", "Science", "History", "Art", "Music", "P.E.", "subject", "class", "lesson", "homework", "test", "vacation", "grade"],
+        "Subject & Class": ["subject", "class", "lesson", "homework", "test", "vacation", "grade"],
         "Job": ["cook", "doctor", "pilot", "singer", "painter", "nurse", "teacher", "actor", "scientist", "photographer", "firefighter", "police officer", "writer", "dentist", "zookeeper"]
       },
       "음식과 음료": {
@@ -1264,7 +1367,6 @@ box-sizing: border-box;
         "Drink & Taste": ["water", "milk", "juice", "lemonade", "tea", "coffee", "sweet", "salty", "sour", "spicy", "bitter", "sugar", "salt", "taste", "delicious"]
       },
       "국가와 자연": {
-        "Country": ["Korea", "the U.S.", "the U.K.", "Japan", "China", "Vietnam", "Thailand", "India", "Italy", "France", "Spain", "Germany", "Sweden", "Canada", "Mexico"],
         "Nature": ["earth", "flower", "tree", "leaves", "forest", "mountain", "river", "sea", "beach", "lake", "grass", "sky", "star", "sun", "moon"],
         "Weather": ["weather", "cloud", "cloudy", "sunny", "raining", "snowing", "windy", "foggy", "lightning", "storm", "snowman", "ice", "snow", "rain", "wind"]
       },
@@ -1276,7 +1378,7 @@ box-sizing: border-box;
       "물건": {
         "School Supplies": ["textbook", "book", "notebook", "pencil", "pencil case", "eraser", "ruler", "scissors", "glue stick", "crayon", "board", "map", "paper", "computer", "bag"],
         "Household": ["door", "window", "bed", "chair", "desk", "table", "sofa", "clock", "lamp", "fan", "mirror", "sink", "stair", "towel", "toothbrush"],
-        "Clothing": ["cap", "hat", "coat", "jacket", "shirt", "T-shirt", "sweater", "dress", "skirt", "pants", "hairpin", "socks", "shoes", "sunglasses", "gloves"]
+        "Clothing": ["cap", "hat", "coat", "jacket", "shirt", "sweater", "dress", "skirt", "pants", "hairpin", "socks", "shoes", "sunglasses", "gloves"]
       },
       "동작": {
         "Daily Action": ["get up", "wash", "brush", "eat", "drink", "sleep", "open", "close", "sit", "stand", "read", "write", "study", "clean", "make"],
@@ -1308,6 +1410,7 @@ for (const cat in RAW_CATEGORY_DATA) {
 
     let gridData = [], currentSelection = [], foundWords = new Set(), foundCells = new Map();
     let round = 1, currentWords = [], wordColors = [], rows = 10, cols = 10;
+    let pendingResultTimerId = null; // 라운드클리어·게임오버 지연 표시용, 화면 나갈 때 취소 대상
    
 const MAX_ROUND = 3;
 
@@ -1560,7 +1663,7 @@ function startGameFromIntroHelp() {
       document.getElementById("game-header").style.display = "flex";
       document.getElementById("game-body").style.display = "flex";
       showGameNavButtons(true);
-      playBgm('game');
+      stopBgmForGameplay();
       resetRound();
     }
 
@@ -1573,23 +1676,25 @@ function startGameFromIntroHelp() {
     // 게임 중 '처음으로': 타이머 정지 후 타이틀 화면으로 이동
     function exitGameToHome() {
       if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+      if (pendingResultTimerId) { clearTimeout(pendingResultTimerId); pendingResultTimerId = null; }
       closeModal();
       document.getElementById("game-header").style.display = "none";
       document.getElementById("game-body").style.display = "none";
       showGameNavButtons(false);
       document.getElementById("title-screen").style.display = "flex";
-      playBgm('intro');
+      playBgm();
     }
 
     // 게임 중 '뒤로': 타이머 정지 후 소분류 선택 화면으로 이동
     function exitGameToSubcategory() {
       if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+      if (pendingResultTimerId) { clearTimeout(pendingResultTimerId); pendingResultTimerId = null; }
       closeModal();
       document.getElementById("game-header").style.display = "none";
       document.getElementById("game-body").style.display = "none";
       showGameNavButtons(false);
       document.getElementById("subcategory-container").style.display = "flex";
-      playBgm('intro');
+      playBgm();
     }
 
     /* ==========================================================================
@@ -1693,9 +1798,12 @@ function formatElapsedTime() {
   return `${m}:${s < 10 ? '0' : ''}${s}`;
 }
 
-function renderResultStats() {
+// [추가] 최종 미션 성공 화면에서만 고양이 캐릭터로 축하 연출을 더해준다.
+function renderResultStats(showCat = false) {
   const totalPossible = getTotalPossibleWords();
+  const catHtml = showCat ? `<div class="result-cat" aria-hidden="true">🐱🎉</div>` : '';
   return `
+    ${catHtml}
     <div class="result-stats">
       <div class="result-stat-tile">
         <div class="result-stat-num">${formatElapsedTime()}</div>
@@ -1713,11 +1821,30 @@ function renderResultStats() {
   `;
 }
 
+// [추가] 라운드 클리어(성공) 시 화면에 뿌려지는 축하 컨페티 효과.
+function spawnConfetti(count = 40) {
+  const container = document.getElementById('confetti-container');
+  if (!container) return;
+  const colors = ['#ff8a65', '#4fc3f7', '#aed581', '#ffd54f', '#ce93d8', '#ff6b9d'];
+  for (let i = 0; i < count; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = (Math.random() * 100) + 'vw';
+    piece.style.background = colors[i % colors.length];
+    const duration = 1.6 + Math.random() * 1.4;
+    const delay = Math.random() * 0.35;
+    piece.style.animationDuration = duration + 's';
+    piece.style.animationDelay = delay + 's';
+    container.appendChild(piece);
+    setTimeout(() => piece.remove(), (duration + delay) * 1000 + 300);
+  }
+}
+
 function showModal(title, isLastRound = false, type = "clear") {
   const modalContent = document.getElementById("modal-content");
   const modalButton = document.getElementById("modal-button");
   const modalBody = document.getElementById("modal-body");
-  
+
   if (document.getElementById("intro-container").style.display === "none" &&
       document.getElementById("category-container").style.display === "none" &&
       document.getElementById("subcategory-container").style.display === "none") {
@@ -1729,6 +1856,10 @@ function showModal(title, isLastRound = false, type = "clear") {
 
   modalContent.classList.toggle("modal-wide", type === "help");
   modalContent.classList.toggle("modal-help-style", type === "help");
+  // [추가] 성공(라운드 클리어/미션 컴플리트)과 실패(타임오버) 팝업을 색상으로 뚜렷하게 구분
+  modalContent.classList.toggle("modal-success", type === "clear");
+  modalContent.classList.toggle("modal-fail", type === "gameover");
+  if (type === "clear") spawnConfetti();
 
   modalBody.style.display = "none";
   modalBody.innerHTML = "";
@@ -1741,7 +1872,7 @@ function showModal(title, isLastRound = false, type = "clear") {
           <li> 총 <b>4분</b>의 시간이 주어지며 게임이 시작되면 시간이 줄어듭니다.</li>
           <li><b>Word Box</b>에 제시된 단어들을 알파벳 퍼즐 판에서 찾습니다.</li>
           <li><b>가로, 세로, 대각선 방향</b>으로 숨겨진 단어를 찾아 철자를 순서대로 클릭합니다.</li>
-          <li>성공 시 <b>20초</b> 추가, 오답 및 힌트 사용 시 <b>10초</b>가 줄어듭니다.</li>
+          <li>정답 시 <b>'+20초'</b>, 오답 및 힌트 사용 시 <b>'-10초'</b></li>
           <li>제한 시간 내에 각 라운드의 모든 단어를 찾아내면 다음 라운드로 진출합니다.</li>
           <li>총 <b>${MAX_ROUND}라운드</b>까지의 모든 단어를 완벽하게 찾아내면 <b>최종 미션 성공!</b></li>
         </ul>
@@ -1772,7 +1903,7 @@ function showModal(title, isLastRound = false, type = "clear") {
   }
   else {
     if (isLastRound) {
-      modalBody.innerHTML = renderResultStats();
+      modalBody.innerHTML = renderResultStats(true);
       modalBody.style.display = "block";
       modalButton.textContent = "Play Again!";
       modalButton.onclick = function() {
@@ -1809,7 +1940,7 @@ document.getElementById("game-header").style.display = "flex";
 }
 
     function gameOver() {
-      setTimeout(() => {
+      pendingResultTimerId = setTimeout(() => {
         playSound('gameover');
         showModal("Time Over! ", false, "gameover");
       }, 100);
@@ -1994,6 +2125,23 @@ function checkWord() {
 
     if (matchIndex !== -1) {
         const matchWord = currentWords[matchIndex];
+
+        // [버그 수정] 글자만 일치하면(예: 정답을 거꾸로 클릭해도) 정답 처리되던 문제 방지.
+        // 실제로 그 단어가 배치된 시작 칸에서부터 클릭을 시작한 경우(=정방향으로 읽은 경우)만
+        // 정답으로 인정하고, 그렇지 않으면(역순 클릭 등) 오답으로 처리한다.
+        const startPos = wordStartPositions.get(matchWord);
+        const clickedStart = currentSelection[0];
+        const isForwardRead = !!startPos && !!clickedStart &&
+            startPos.r === clickedStart.r && startPos.c === clickedStart.c;
+
+        if (!isForwardRead) {
+            playSound('wrong');
+            timeLeft -= 10;
+            showTimerFeedback("-10초");
+            currentSelection = [];
+            return;
+        }
+
         if (!foundWords.has(matchWord)) {
             playSound('correct');
             foundWords.add(matchWord);
@@ -2008,14 +2156,14 @@ function checkWord() {
             
             if (foundWords.size === currentWords.length) {
                 if (round >= MAX_ROUND) {
-                    setTimeout(() => {
+                    pendingResultTimerId = setTimeout(() => {
                         playSound('complete');
                         showModal("Mission Complete! 🏆", true, "clear");
                         clearInterval(timerInterval);
                         timerInterval = null;
                     }, 500);
                 } else {
-                    setTimeout(() => {
+                    pendingResultTimerId = setTimeout(() => {
                         playSound('clear');
                         showModal("Round " + round + " Clear!", false, "clear");
                     }, 500);
