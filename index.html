@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Word Catch! Catch!</title>
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
   <style>
 @font-face {
   font-family: 'Hakgyoansim_BoardmarkerR';
@@ -29,12 +30,27 @@ body, button, input, textarea {
   font-family: 'Hakgyoansim_PosterB', 'Nanum Gothic', sans-serif;
 }
 
+/* [수정] 실제 게임 캔버스 스케일링과 분리된, 뷰포트 전체 기준 독립 화면.
+   picktheword처럼 화면을 더 크게 채우기 위해 game-wrapper 밖에서 직접 뷰포트에 맞춘다. */
 #title-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+  box-sizing: border-box;
+  background: #eaf3fb;
+  z-index: 40;
+}
+
+.title-card {
   position: relative;
-  width: 95%;
-  max-width: 1200px;
-  height: 650px;
-  margin: auto;
+  height: min(80vh, 720px);
+  aspect-ratio: 2752 / 1536; /* 0.png 원본 비율 */
+  max-width: 92vw;
   border-radius: 40px;
   overflow: hidden;
   display: flex;
@@ -90,29 +106,41 @@ position: relative;
 
 
 #intro-container {
-width: 95% !important;
-  max-width: 1200px;
-height: auto;
-  min-height: auto;
-  margin: auto;    
-  padding: 30px;    
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+  box-sizing: border-box;
+  background: #eaf3fb;
+  z-index: 40;
+}
+
+.intro-card {
+  width: min(92vw, 1400px);
+  max-height: 84vh;
+  overflow-y: auto;
+  padding: 30px;
   background:
     radial-gradient(circle at top left, #ffe0f3 0%, transparent 30%),
     radial-gradient(circle at top right, #d6f0ff 0%, transparent 30%),
     rgba(255,255,255,0.85);
 
   backdrop-filter: blur(10px);
-border-radius: 40px;
+  border-radius: 40px;
   border: 6px solid #ffffff;
   box-shadow: 0 15px 35px rgba(0,0,0,0.08), 0 5px 0 #cfe9ff;
- 
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
- 
+
   position: relative;
-box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 @keyframes floatStar {
@@ -301,21 +329,21 @@ box-sizing: border-box;
       width: 95% !important;
       max-width: 1200px;
       display: none;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 16px;
       margin: clamp(8px, 1.5vh, 19px) auto clamp(10px, 2vh, 22px);
     }
 
     /* [수정] 헤더의 'Word Catch' 타이틀은 시선을 덜 끌도록 작고 단순하게, 항상 중앙 정렬 */
     .challenge-title {
-      padding: 8px 26px;
+      padding: 20px 56px;
       background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 25%, #fbc2eb 50%, #a1c4fd 75%, #c2e9fb 100%);
       background-size: 200% auto;
       animation: gradientMove 4s linear infinite;
       color: white;
-      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-size: clamp(2.8rem, 5.6vw, 4rem);
       font-weight: 900;
       border-radius: 40px;
       box-shadow: 0 4px 0 #e08588, 0 6px 10px rgba(0, 0, 0, 0.1);
@@ -675,9 +703,13 @@ overflow-y: auto;
 
     /* [추가] 최종 미션 성공 화면의 고양이 캐릭터 연출 */
     .result-cat {
-      font-size: clamp(2.5rem, 6vw, 3.5rem);
       text-align: center;
       animation: catBounce 1.2s ease-in-out infinite;
+    }
+    .result-cat img {
+      width: clamp(90px, 16vw, 150px);
+      height: auto;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
     }
     @keyframes catBounce {
       0%, 100% { transform: translateY(0) rotate(-4deg); }
@@ -768,7 +800,7 @@ body {
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 50%;
+  top: calc(50% + 20px); /* 상단 고정 네비게이션 버튼과 겹치지 않도록 중앙보다 살짝 아래로 */
   left: 50%;
   transform: translate(-50%, -50%) scale(1); /* 👈 CSS 초기값으로 중앙 배치를 명시 */
   transform-origin: center center;           /* 👈 한 번만 깔끔하게 지정 */
@@ -838,96 +870,70 @@ justify-content: center;
        [추가] 카테고리 및 소분류 선택 단계 관련 신규 UI 스타일
        ========================================================================== */
     #category-container, #subcategory-container {
-      width: 95% !important;
-      max-width: 1200px;
-      height: auto;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding-top: 70px;
+      box-sizing: border-box;
+      background: #eaf3fb;
+      display: none; /* JS가 flex로 토글 */
+      z-index: 40;
+      padding-top: 50px;
+    }
+
+    .selection-card {
+      width: min(92vw, 1400px);
+      max-height: 88vh;
+      overflow-y: auto;
       margin: auto;
-      padding: 40px;
+      padding: 28px 32px;
       background: radial-gradient(circle at top left, #ffe0f3 0%, transparent 30%), radial-gradient(circle at top right, #d6f0ff 0%, transparent 30%), rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-radius: 40px;
       border: 6px solid #ffffff;
       box-shadow: 0 15px 35px rgba(0,0,0,0.08), 0 5px 0 #cfe9ff;
-      display: none;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: clamp(14px, 2vh, 24px);
       box-sizing: border-box;
       position: relative;
     }
 
-    .selection-back-btn {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      z-index: 5;
-      width: auto;
-      padding: 10px 22px;
-      background: linear-gradient(180deg, #fefeff 0%, #eef8ff 100%);
-      border: 3px solid #9ed8ff;
-      border-radius: 999px;
-      color: #4a5568;
-      font-weight: 900;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #b8e4ff, 0 6px 10px rgba(0,0,0,0.05);
-      transition: all 0.15s ease;
-      box-sizing: border-box;
+    /* [수정] 상단 네비게이션: pick the word 게임과 동일한 glass-pill 스타일/아이콘으로 통일 */
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(100, 120, 180, 0.15);
     }
-    .selection-back-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #b8e4ff, 0 8px 12px rgba(0,0,0,0.08);
+    #nav-left-group, #nav-right-group {
+      position: fixed;
+      top: 18px;
+      z-index: 1000000;
+      display: flex;
+      gap: 10px;
     }
-
-    .selection-topright-group {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      z-index: 5;
+    #nav-left-group { left: 18px; }
+    #nav-right-group { right: 18px; }
+    .nav-icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 9999px;
+      border: 2px solid rgba(255,255,255,0.85);
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .selection-home-btn {
-      position: relative;
-      width: auto;
-      padding: 10px 22px;
-      background: linear-gradient(180deg, #fefeff 0%, #eef8ff 100%);
-      border: 3px solid #9ed8ff;
-      border-radius: 999px;
-      color: #4a5568;
-      font-weight: 900;
-      font-size: 0.95rem;
+      justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 0 #b8e4ff, 0 6px 10px rgba(0,0,0,0.05);
-      transition: all 0.15s ease;
-      box-sizing: border-box;
+      font-size: 22px;
+      color: #3b3a66;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
     }
-    .selection-home-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #b8e4ff, 0 8px 12px rgba(0,0,0,0.08);
-    }
-
-    .selection-forward-btn {
-      position: relative;
-      width: auto;
-      padding: 10px 22px;
-      background: linear-gradient(180deg, #fefeff 0%, #eef8ff 100%);
-      border: 3px solid #9ed8ff;
-      border-radius: 999px;
-      color: #4a5568;
-      font-weight: 900;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #b8e4ff, 0 6px 10px rgba(0,0,0,0.05);
-      transition: all 0.15s ease;
-      box-sizing: border-box;
-    }
-    .selection-forward-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #b8e4ff, 0 8px 12px rgba(0,0,0,0.08);
-    }
+    .nav-icon-btn:hover { transform: translateY(-2px); }
+    .nav-icon-btn:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
 
     .selection-heading {
       font-size: clamp(1.6rem, 4.5vw, 2.8rem);
@@ -940,15 +946,15 @@ justify-content: center;
 
     .grid-menu {
       display: grid;
-      grid-template-columns: repeat(3, 190px);
-      gap: 30px;
+      grid-template-columns: repeat(3, minmax(170px, 260px));
+      gap: clamp(14px, 2.2vh, 28px);
       justify-content: center;
-      margin: 10px 0;
+      margin: 6px 0;
     }
 
     .menu-box-btn {
-      width: 190px;
-      height: 140px;
+      width: 100%;
+      height: clamp(96px, 15vh, 168px);
       min-width: 0;
       overflow-wrap: break-word;
       background: linear-gradient(180deg, #fefeff 0%, #eef8ff 100%);
@@ -960,7 +966,7 @@ justify-content: center;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: clamp(1.3rem, 1.6vw, 1.6rem);
       font-weight: 900;
       color: #4a5568;
       transition: all 0.15s ease;
@@ -971,7 +977,7 @@ justify-content: center;
     }
 
     .menu-box-btn span {
-      font-size: 1rem;
+      font-size: clamp(1rem, 1.1vw, 1.15rem);
       color: #718096;
       font-weight: normal;
       margin-top: 4px;
@@ -1069,8 +1075,8 @@ justify-content: center;
 /* 대분류 전체 버튼 전용 와이드 스타일 */
 .menu-box-btn.full-width {
   width: 100%;
-  max-width: 630px;  /* 하단 소분류 3개 배치 너비와 균형을 맞춤 */
-  height: 96px;      /* 시안에 맞춘 슬림한 바 형태 */
+  max-width: 852px;  /* 하단 소분류 3개 배치 너비(260px*3 + gap)와 균형을 맞춤 */
+  height: clamp(96px, 7vw, 120px);
 background: linear-gradient(180deg, #fefeff 0%, #eef8ff 100%);  border: 3px solid #b3e5fc;
 border: 4px solid #9ed8ff;
   border-radius: 24px;
@@ -1118,22 +1124,34 @@ box-sizing: border-box;
 <audio id="bgm-intro" src="fluxsound-cheerful-upbeat-kids-486631.mp3" loop preload="none"></audio>
 <audio id="bgm-game" src="viacheslavstarostin-game-gaming-video-game-music-471936.mp3" loop preload="none"></audio>
 
-<button type="button" id="music-toggle-btn" onclick="toggleMusic()" style="position:fixed;top:18px;right:18px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#ff9a9e;box-shadow:0 4px 0 #d63031;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;">
-  <span id="music-toggle-icon">🎵</span>
-</button>
+<!-- [수정] 상단 네비게이션 - 전체 게임 공통, 위치 고정. pick the word 게임과 동일한 배치/스타일:
+     왼쪽: 홈/뒤로/앞으로, 오른쪽: How to Play/효과음/배경음/전체화면 -->
+<div id="nav-left-group">
+  <button type="button" id="nav-home-btn" class="glass-pill nav-icon-btn" onclick="navHomeGlobal()" title="처음으로">
+    <i class="fa-solid fa-house"></i>
+  </button>
+  <button type="button" id="nav-back-btn" class="glass-pill nav-icon-btn" onclick="navBackGlobal()" title="뒤로">
+    <i class="fa-solid fa-play" style="transform:scaleX(-1);"></i>
+  </button>
+  <button type="button" id="nav-forward-btn" class="glass-pill nav-icon-btn" onclick="navForwardGlobal()" title="앞으로">
+    <i class="fa-solid fa-play"></i>
+  </button>
+</div>
 
-<button type="button" id="fullscreen-toggle-btn" onclick="toggleFullscreen()" style="position:fixed;top:18px;right:80px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#4fc3f7;box-shadow:0 4px 0 #0288d1;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;">
-  <span id="fullscreen-toggle-icon">⛶</span>
-</button>
-
-<!-- 실제 게임 화면에서만 표시되는 홈/뒤로 버튼 (음악·전체화면 버튼과 대칭되는 왼쪽 위 위치) -->
-<button type="button" id="game-back-btn" onclick="exitGameToSubcategory()" style="display:none;position:fixed;top:18px;left:18px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#ffb74d;box-shadow:0 4px 0 #f57c00;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;" title="뒤로">
-  ◀
-</button>
-
-<button type="button" id="game-home-btn" onclick="exitGameToHome()" style="display:none;position:fixed;top:18px;left:80px;z-index:1000000;width:52px;height:52px;border-radius:9999px;border:3px solid #ffffff;background:#66bb6a;box-shadow:0 4px 0 #388e3c;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:#ffffff;" title="처음으로">
-  🏠
-</button>
+<div id="nav-right-group">
+  <button type="button" id="nav-htp-btn" class="glass-pill nav-icon-btn" onclick="navHtpGlobal()" title="How to Play">
+    <i class="fa-regular fa-circle-question"></i>
+  </button>
+  <button type="button" id="sfx-toggle-btn" class="glass-pill nav-icon-btn" onclick="toggleSfx()" title="효과음 On/Off">
+    <i class="fa-solid fa-bell" id="sfx-toggle-icon"></i>
+  </button>
+  <button type="button" id="music-toggle-btn" class="glass-pill nav-icon-btn" onclick="toggleMusic()" title="배경음악 On/Off">
+    <i class="fa-solid fa-music" id="music-toggle-icon"></i>
+  </button>
+  <button type="button" id="fullscreen-toggle-btn" class="glass-pill nav-icon-btn" onclick="toggleFullscreen()" title="전체화면">
+    <i class="fa-solid fa-expand" id="fullscreen-toggle-icon"></i>
+  </button>
+</div>
 
 <!-- [추가] 라운드 클리어 축하 컨페티가 뿌려질 전체 화면 오버레이 (클릭 통과, 항상 최상단) -->
 <div id="confetti-container"></div>
@@ -1147,15 +1165,19 @@ box-sizing: border-box;
   </div>
 </div>
 
-<div id="game-wrapper">
+<!-- [수정] 인트로~서브카테고리 선택 화면은 실제 게임(퍼즐 그리드) 캔버스 스케일링에서 분리해
+     picktheword처럼 뷰포트 전체 기준으로 독립적으로 크게 표시되도록 game-wrapper 밖으로 이동 -->
 <div id="title-screen">
-  <img src="0.png" alt="Title Background" class="full-title-bg">
-  <div class="title-btn-group">
-    <button class="start-btn intro-how-btn" onclick="openHelpFromTitle()">How to Play</button>
-    <button class="start-btn" onclick="clickStartFromTitle()">GAME START</button>
+  <div class="title-card">
+    <img src="0.png" alt="Title Background" class="full-title-bg">
+    <div class="title-btn-group">
+      <button class="start-btn intro-how-btn" onclick="openHelpFromTitle()">How to Play</button>
+      <button class="start-btn" onclick="clickStartFromTitle()">GAME START</button>
+    </div>
   </div>
 </div>
-  <div id="intro-container" style="display: none;">
+<div id="intro-container" style="display: none;">
+  <div class="intro-card">
     <div class="intro-title">How to Play</div>
 
     <div class="intro-box blue-box">
@@ -1174,13 +1196,10 @@ box-sizing: border-box;
       <button class="start-btn" onclick="startGameFromIntroHelp()">GAME START</button>
     </div>
   </div>
+</div>
 
-  <div id="category-container">
-    <button class="selection-back-btn" onclick="goBackFromCategory()">뒤로</button>
-    <div class="selection-topright-group">
-      <button class="selection-home-btn" onclick="goHomeFromSelection()">처음으로</button>
-      <button class="selection-forward-btn" onclick="forwardFromCategory()">앞으로</button>
-    </div>
+<div id="category-container">
+  <div class="selection-card">
     <h2 class="selection-heading">원하는 주제를 선택하세요</h2>
     <div class="grid-menu">
       <button class="menu-box-btn" onclick="selectCategory('숫자·색깔·시간')">숫자·색깔·시간<span>Number, Color & Time</span></button>
@@ -1194,22 +1213,21 @@ box-sizing: border-box;
       <button class="menu-box-btn" onclick="selectCategory('특징과 감정')">특징과 감정<span>Character & Feeling</span></button>
     </div>
   </div>
+</div>
 
 <div id="subcategory-container">
-    <button class="selection-back-btn" onclick="goBackFromSubcategory()">뒤로</button>
-    <div class="selection-topright-group">
-      <button class="selection-home-btn" onclick="goHomeFromSelection()">처음으로</button>
-      <button class="selection-forward-btn" onclick="forwardFromSubcategory()">앞으로</button>
-    </div>
+  <div class="selection-card">
     <h2 class="selection-heading">주제를 선택하세요.</h2>
         <div id="all-btn-area" style="width: 100%; display: flex; justify-content: center; margin-bottom: 5px;"></div>
         <div class="grid-menu" id="subcategory-menu-grid"></div>
         <div class="status-counter" id="live-word-counter">0단어 선택됨</div>
     <button class="start-btn" onclick="launchGameAfterSelection()">GAME START</button>
   </div>
+</div>
 
+<div id="game-wrapper">
 <div class="header-container" id="game-header">
-  <div class="challenge-title">Word Catch</div>
+  <div class="challenge-title">Word Catch! Catch!</div>
   <div id="round-display">
     ROUND <span class="current-idx">1</span><span class="total-idx">/ 3</span>
   </div>
@@ -1219,16 +1237,15 @@ box-sizing: border-box;
 <div class="left-panel">
   <div class="btn-group">
     <button class="buzzer-btn hint-btn" onclick="useHint()">Hint</button>
-    <button class="how-to-play-btn" onclick="openHelp()">How to Play</button>
-  </div>
-
-    <div class="word-container">
-<div class="timer-circle-box timer-prominent">
-  <svg viewBox="0 0 100 100"> <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-    <circle id="timer-circle" class="circle-progress" cx="50" cy="50" r="40"></circle>
+    <div class="timer-circle-box timer-prominent">
+      <svg viewBox="0 0 100 100"> <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+        <circle id="timer-circle" class="circle-progress" cx="50" cy="50" r="40"></circle>
       </svg>
       <div id="timer-text">4:00</div>
     </div>
+  </div>
+
+    <div class="word-container">
       <div class="word-box">
         <h2> Word Box </h2>
         <div id="word-list"></div>
@@ -1246,10 +1263,8 @@ box-sizing: border-box;
 
   <script>
     /* ================= BACKGROUND MUSIC ================= */
-    // [정책 변경] 교실에서 여러 팀이 함께 플레이하는 게임 특성상, 실제 퍼즐을 푸는 동안
-    // 계속 흘러나오는 BGM은 집중을 방해할 수 있어 타이틀/How to Play/대분류·소분류 선택
-    // 화면에서만 재생하고, 실제 게임(그리드) 화면으로 넘어가면 BGM을 정지한다.
-    // (효과음(정답/오답/힌트/라운드클리어/타임오버 등)은 그대로 유지된다.)
+    // Word Catch는 단체 게임이 아니라 개인 플레이 게임이라, 타이틀 화면부터 실제 퍼즐
+    // 게임 화면까지 화면 전환과 상관없이 BGM이 계속 재생된다.
     const bgmIntro = document.getElementById('bgm-intro');
     const MUSIC_MUTE_KEY = 'wordcatch_bgm_muted';
     // [버그 수정] 음소거 상태를 화면 전환과 무관하게 하나의 값으로 관리하고 localStorage에
@@ -1267,8 +1282,22 @@ box-sizing: border-box;
 
     function updateMusicIcon() {
         const icon = document.getElementById('music-toggle-icon');
-        if (icon) icon.textContent = bgmMuted ? '🔇' : '🎵';
+        if (icon) icon.className = bgmMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-music';
     }
+
+    /* [추가] 효과음 On/Off - pick the word 게임과 동일하게 배경음악과 별개로 켜고 끔 */
+    let sfxMuted = false;
+    try { sfxMuted = localStorage.getItem('wordcatch_sfx_muted') === '1'; } catch (e) {}
+    function updateSfxIcon() {
+        const icon = document.getElementById('sfx-toggle-icon');
+        if (icon) icon.className = sfxMuted ? 'fa-solid fa-bell-slash' : 'fa-solid fa-bell';
+    }
+    function toggleSfx() {
+        sfxMuted = !sfxMuted;
+        try { localStorage.setItem('wordcatch_sfx_muted', sfxMuted ? '1' : '0'); } catch (e) {}
+        updateSfxIcon();
+    }
+    window.addEventListener('load', updateSfxIcon);
 
     function applyBgmState() {
         if (!bgmIntro) return;
@@ -1283,12 +1312,6 @@ box-sizing: border-box;
     // 타이틀/How to Play/대분류/소분류 선택 화면 진입 시 호출
     function playBgm() {
         bgmShouldPlay = true;
-        applyBgmState();
-    }
-
-    // 실제 게임(퍼즐) 화면 진입 시 호출: BGM 정지, 효과음은 영향 없음
-    function stopBgmForGameplay() {
-        bgmShouldPlay = false;
         applyBgmState();
     }
 
@@ -1337,7 +1360,7 @@ box-sizing: border-box;
     }
     function updateFullscreenIcon() {
         const icon = document.getElementById('fullscreen-toggle-icon');
-        if (icon) icon.textContent = getFullscreenElement() ? '❐' : '⛶';
+        if (icon) icon.className = getFullscreenElement() ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
     }
     document.addEventListener('fullscreenchange', updateFullscreenIcon);
     document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
@@ -1432,16 +1455,19 @@ function clickStartFromTitle() {
   document.getElementById("category-container").style.display = "flex";
 }
 
-// How to Play 클릭 시 설명 화면 보여주기
+// How to Play 클릭 시 설명 화면 보여주기 (상단 고정 네비게이션에서 호출될 때는
+// 타이틀 화면뿐 아니라 대분류/소분류 화면에서도 호출될 수 있으므로, 어느 화면에서 왔는지 기억해둔다)
+let introReturnScreen = "title-screen";
 function openHelpFromTitle() {
-  document.getElementById("title-screen").style.display = "none";
+  introReturnScreen = getCurrentScreenId();
+  document.getElementById(introReturnScreen).style.display = "none";
   document.getElementById("intro-container").style.display = "flex";
 }
 
-// How to Play 설명창에서 Close를 누르면 다시 찐인트로 화면으로 복귀하도록 수정
+// How to Play 설명창에서 Close를 누르면 원래 있던 화면으로 복귀
 function hideIntroHelpView() {
   document.getElementById("intro-container").style.display = "none";
-  document.getElementById("title-screen").style.display = "flex";
+  document.getElementById(introReturnScreen).style.display = "flex";
 }
 
 // [추가] How to Play 화면에서 학습목표·게임방법 확인 후 바로 Game Start로 이동
@@ -1450,6 +1476,7 @@ function startGameFromIntroHelp() {
   document.getElementById("category-container").style.display = "flex";
 }
     function playSound(type) {
+      if (sfxMuted) return;
       if (audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
@@ -1662,15 +1689,7 @@ function startGameFromIntroHelp() {
       document.getElementById("subcategory-container").style.display = "none";
       document.getElementById("game-header").style.display = "flex";
       document.getElementById("game-body").style.display = "flex";
-      showGameNavButtons(true);
-      stopBgmForGameplay();
       resetRound();
-    }
-
-    // 실제 게임 화면 전용 홈/뒤로 버튼 표시 토글
-    function showGameNavButtons(show) {
-      document.getElementById("game-back-btn").style.display = show ? "flex" : "none";
-      document.getElementById("game-home-btn").style.display = show ? "flex" : "none";
     }
 
     // 게임 중 '처음으로': 타이머 정지 후 타이틀 화면으로 이동
@@ -1680,7 +1699,6 @@ function startGameFromIntroHelp() {
       closeModal();
       document.getElementById("game-header").style.display = "none";
       document.getElementById("game-body").style.display = "none";
-      showGameNavButtons(false);
       document.getElementById("title-screen").style.display = "flex";
       playBgm();
     }
@@ -1692,9 +1710,52 @@ function startGameFromIntroHelp() {
       closeModal();
       document.getElementById("game-header").style.display = "none";
       document.getElementById("game-body").style.display = "none";
-      showGameNavButtons(false);
       document.getElementById("subcategory-container").style.display = "flex";
       playBgm();
+    }
+
+    /* [추가] 상단 고정 네비게이션(홈/뒤로/앞으로/How to Play) 공용 디스패처
+       - 현재 어떤 화면이 보이고 있는지에 따라 알맞은 이동 함수로 연결한다 */
+    function getCurrentScreenId() {
+      const ids = ["title-screen", "intro-container", "category-container", "subcategory-container", "game-body"];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.style.display !== "none") return id;
+      }
+      return "title-screen";
+    }
+    function navHomeGlobal() {
+      const screen = getCurrentScreenId();
+      if (screen === "title-screen") return;
+      if (screen === "intro-container") { hideIntroHelpView(); return; }
+      if (screen === "game-body") { exitGameToHome(); return; }
+      goHomeFromSelection();
+    }
+    function navBackGlobal() {
+      const screen = getCurrentScreenId();
+      switch (screen) {
+        case "intro-container": hideIntroHelpView(); break;
+        case "category-container": goBackFromCategory(); break;
+        case "subcategory-container": goBackFromSubcategory(); break;
+        case "game-body": exitGameToSubcategory(); break;
+        default: break; // title-screen: 더 갈 곳이 없음
+      }
+    }
+    function navForwardGlobal() {
+      const screen = getCurrentScreenId();
+      switch (screen) {
+        case "title-screen": clickStartFromTitle(); break;
+        case "intro-container": startGameFromIntroHelp(); break;
+        case "category-container": forwardFromCategory(); break;
+        case "subcategory-container": forwardFromSubcategory(); break;
+        default: break; // game-body: 다음 단계 없음
+      }
+    }
+    function navHtpGlobal() {
+      const screen = getCurrentScreenId();
+      if (screen === "game-body") { openHelp(); return; }
+      if (screen === "intro-container") return; // 이미 How to Play 화면
+      openHelpFromTitle();
     }
 
     /* ==========================================================================
@@ -1801,7 +1862,7 @@ function formatElapsedTime() {
 // [추가] 최종 미션 성공 화면에서만 고양이 캐릭터로 축하 연출을 더해준다.
 function renderResultStats(showCat = false) {
   const totalPossible = getTotalPossibleWords();
-  const catHtml = showCat ? `<div class="result-cat" aria-hidden="true">🐱🎉</div>` : '';
+  const catHtml = showCat ? `<div class="result-cat"><img src="1.png" alt="기뻐하는 고양이 캐릭터"></div>` : '';
   return `
     ${catHtml}
     <div class="result-stats">
@@ -2215,20 +2276,23 @@ function useHint() {
 function resizeGame() {
   const wrapper = document.getElementById("game-wrapper");
   const winW = window.innerWidth;
-  const winH = window.innerHeight;
- 
+  // 상단 고정 네비게이션 버튼(52px + 여백)과 겹치지 않도록 사용 가능 높이에서 미리 빼둔다.
+  const NAV_RESERVED = 40;
+  const winH = window.innerHeight - NAV_RESERVED;
+
   const designW = 1200;
   const designH = 800;
- 
+
   const isPortrait = winH > winW;
- 
+
   let scale;
   if (isPortrait) {
     scale = (winW / designW);
   } else {
-    scale = Math.min(winW / designW, winH / designH) * 0.9;
+    // pick the word 게임과 동일한 여백 비율(0.96)을 적용해 화면을 더 꽉 채운다.
+    scale = Math.min(winW / designW, winH / designH) * 0.96;
   }
- 
+
   wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
 }
 
