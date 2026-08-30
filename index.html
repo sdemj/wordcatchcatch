@@ -336,50 +336,40 @@ position: relative;
       margin: clamp(8px, 1.5vh, 19px) auto clamp(10px, 2vh, 22px);
     }
 
-    /* [수정] 헤더의 'Word Catch' 타이틀은 시선을 덜 끌도록 작고 단순하게, 항상 중앙 정렬 */
+    /* [수정] 반짝이는 그라데이션 애니메이션 박스 제거, 단순한 색상 텍스트로 변경 */
     .challenge-title {
-      padding: 20px 56px;
-      background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 25%, #fbc2eb 50%, #a1c4fd 75%, #c2e9fb 100%);
-      background-size: 200% auto;
-      animation: gradientMove 4s linear infinite;
-      color: white;
+      color: #ff6f91;
       font-size: clamp(2.8rem, 5.6vw, 4rem);
       font-weight: 900;
-      border-radius: 40px;
-      box-shadow: 0 4px 0 #e08588, 0 6px 10px rgba(0, 0, 0, 0.1);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+      -webkit-text-stroke: 3px white;
+      paint-order: stroke fill;
+      text-shadow:
+        -2px -2px 0 #fff, 2px -2px 0 #fff,
+        -2px 2px 0 #fff, 2px 2px 0 #fff,
+        0 4px 4px rgba(0,0,0,0.15);
       letter-spacing: 0.5px;
-      border: 3px solid white;
       text-align: center;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    #round-display {
-      background-color: #ffd54f;
-      color: #795548;
-      padding: 10px 22px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-radius: 31px;
-      box-shadow: 0 4px 0 #ffb300;
+    #round-display.round-badge {
+      width: 210px;
+      background: #3592DE;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-variant-numeric: tabular-nums;
       white-space: nowrap;
-      border: 3px solid white;
+      text-align: center;
+      box-sizing: border-box;
     }
 
-    #round-display .current-idx {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: #d84315;
-      margin-right: 2px;
-    }
+    #round-display .current-idx,
     #round-display .total-idx {
-      color: #9e7567;
-      font-size: 1rem;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
     }
 
     .timer-circle-box {
@@ -401,15 +391,15 @@ position: relative;
       filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
     }
     .timer-circle-box.timer-prominent #timer-text {
-      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      font-size: clamp(1.05rem, 1.7vw, 1.35rem);
     }
 
     .main-game-container {
       display: none;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: flex-start;
-      gap: clamp(20px, 4vw, 50px);
+      align-items: stretch;
+      gap: 14px;
       margin-top: 2px;
 width: 95% !important;
       max-width: 1200px;
@@ -422,6 +412,11 @@ width: 95% !important;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+.left-panel .word-panel-card {
+  flex: 1;
+  width: 100%;
 }
 
 .btn-group {
@@ -503,15 +498,15 @@ width: 95% !important;
 .timer-circle-box circle {
       fill: white;
       stroke-width: 10;
-      cx: 50; /* [수정] SVG viewBox(100 100)의 정확한 중앙인 50으로 통일 */
-      cy: 50; /* [수정] SVG viewBox(100 100)의 정확한 중앙인 50으로 통일 */
-      r: 40;  /* 반지름을 viewBox 규격에 맞게 조정 */
+      cx: 50;
+      cy: 50;
+      r: 40;
     }
 
 .circle-bg { stroke: #eee; }
     .circle-progress {
       stroke: #ef5350;
-      stroke-dasharray: 251.2; /* [수정] 반지름 40에 맞는 정확한 둘레 값(2 * PI * 40) 계산 반영 */
+      stroke-dasharray: 251.2;
       stroke-dashoffset: 0;
       stroke-linecap: round;
       transition: stroke-dashoffset 0.1s linear;
@@ -538,6 +533,9 @@ width: 95% !important;
     }
     .word-box {
       width: 210px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
 text-align: center;
       background-color: #ffffff;
       border: 5px dashed #ffab91;
@@ -553,6 +551,14 @@ align-items: center;
       font-size: 1.3rem;
       color: #ff7043;
       white-space: nowrap;
+    }
+
+    #word-list {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
    
     .word-box .word-item {
@@ -811,8 +817,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-justify-content: center;
+justify-content: flex-start;
   gap: 10px; /* 박스와 버튼 사이 간격 */
+  width: 100%;
+}
+
+.word-panel-card {
+  background-color: #f4fbfe;
+  padding: 15px;
+  border-radius: 25px;
+  border: 6px solid #cceaf9;
+  box-shadow: 0 12.5px 0 #bfe2f5;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .how-to-play-btn {
@@ -1228,27 +1246,28 @@ box-sizing: border-box;
 <div id="game-wrapper">
 <div class="header-container" id="game-header">
   <div class="challenge-title">Word Catch! Catch!</div>
-  <div id="round-display">
-    ROUND <span class="current-idx">1</span><span class="total-idx">/ 3</span>
-  </div>
 </div>
 
 <div class="main-game-container" id="game-body">
 <div class="left-panel">
-  <div class="btn-group">
-    <button class="buzzer-btn hint-btn" onclick="useHint()">Hint</button>
-    <div class="timer-circle-box timer-prominent">
-      <svg viewBox="0 0 100 100"> <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-        <circle id="timer-circle" class="circle-progress" cx="50" cy="50" r="40"></circle>
-      </svg>
-      <div id="timer-text">4:00</div>
-    </div>
-  </div>
-
-    <div class="word-container">
-      <div class="word-box">
-        <h2> Word Box </h2>
-        <div id="word-list"></div>
+    <div class="word-panel-card">
+      <div class="word-container">
+        <div id="round-display" class="round-badge">
+          ROUND <span class="current-idx">1</span><span class="total-idx">/ 3</span>
+        </div>
+        <div class="btn-group">
+          <button class="buzzer-btn hint-btn" onclick="useHint()">Hint</button>
+          <div class="timer-circle-box timer-prominent">
+            <svg viewBox="0 0 100 100"> <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+              <circle id="timer-circle" class="circle-progress" cx="50" cy="50" r="40"></circle>
+            </svg>
+            <div id="timer-text">4:00</div>
+          </div>
+        </div>
+        <div class="word-box">
+          <h2> Word Box </h2>
+          <div id="word-list"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2253,19 +2272,18 @@ function useHint() {
     showTimerFeedback("-10초");
     
     document.querySelectorAll(".cell").forEach(cell => cell.classList.remove("hint-active"));
-    
-    remainingWords.forEach(word => {
-        const pos = wordStartPositions.get(word);
-        if (pos) {
-            const cellIndex = pos.r * cols + pos.c;
-            const cells = document.querySelectorAll(".cell");
-            const cellEl = cells[cellIndex];
-            
-            if (cellEl && !cellEl.classList.contains("found")) {
-                cellEl.classList.add("hint-active");
-            }
+
+    const targetWord = remainingWords[0];
+    const pos = wordStartPositions.get(targetWord);
+    if (pos) {
+        const cellIndex = pos.r * cols + pos.c;
+        const cells = document.querySelectorAll(".cell");
+        const cellEl = cells[cellIndex];
+
+        if (cellEl && !cellEl.classList.contains("found")) {
+            cellEl.classList.add("hint-active");
         }
-    });
+    }
 
     setTimeout(() => {
         document.querySelectorAll(".cell").forEach(cell => cell.classList.remove("hint-active"));
