@@ -1,0 +1,2562 @@
+{
+  "sessionMinutes": 109.7,
+  "reloadCount": 35,
+  "screenNow": "title-screen",
+  "findings": [
+    {
+      "level": "ERR",
+      "title": "화면을 옮긴 뒤에도 예약된 작업이 실행됨",
+      "count": 268,
+      "items": [
+        {
+          "종류": "한번",
+          "예약(ms)": 800,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "showTimerFeedback (https://sdemj.github.io/wordcatchcatch/:1862:7) ← checkWord (https://sdemj.github.io/wordcatchcatch/:2229:13)",
+          "reloadIndex": 7
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 7
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 800,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "showTimerFeedback (https://sdemj.github.io/wordcatchcatch/:1862:7) ← useHint (https://sdemj.github.io/wordcatchcatch/:2272:5)",
+          "reloadIndex": 9
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 9
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 11
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 11
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 800,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "showTimerFeedback (https://sdemj.github.io/wordcatchcatch/:1862:7) ← checkWord (https://sdemj.github.io/wordcatchcatch/:2229:13)",
+          "reloadIndex": 13
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 13
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 18
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2099.9828644946156,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2119.8541174356133,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2164.8574352297655,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2171.951059971717,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2180.2015708359195,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2207.2559896301996,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2329.08476478607,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2357.402706675273,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2378.23672530004,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2526.177515593914,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2558.0498152313535,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2594.344523951891,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2597.7130568137477,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2599.544252486811,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2604.2283228198094,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2613.3273279368373,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2623.732920326523,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2647.6952069039917,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2716.1218846942784,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2736.8010439568297,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2740.4835123171783,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2745.27395674127,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2747.972141370662,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2778.3372769717844,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2847.8035948886086,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2939.144402915928,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3021.2888376631104,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3035.967749270898,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3091.8605973538174,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3098.131224270301,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3143.397619311346,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3144.0181716361685,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3154.5725304103867,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3205.6745087473546,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3218.2316862507587,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3236.8468240937755,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3239.7939695108334,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3363.854189797109,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3436.112011394597,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3485.204804627229,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2138.7740363688804,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2148.9171508318013,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2182.4800637652806,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2225.1460615961005,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2259.2238872885628,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2263.5229264857994,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2277.9509462355054,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2279.5184465887114,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2306.8641491739163,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2387.1373584078174,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2395.5774564928074,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2402.1168090222804,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2414.949077091237,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2434.862479252477,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2458.567776305858,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2485.4300529105994,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2540.630729053394,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2583.4228248366485,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2591.8625799291826,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2640.3616411994763,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2757.3248516274093,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2840.015610170035,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2854.2480858973504,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2885.0883916268976,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2887.0759684188583,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2091.2404666341404,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2109.6067069481633,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2118.5431858952943,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2151.0775998751997,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2152.2232275307024,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2190.9347656027994,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2203.288521729246,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2262.914904162183,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2265.545794179525,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2291.8549725761777,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2300.4071565387335,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2369.231239980637,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2390.9431721259893,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2424.882388878177,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2648.917117597047,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2653.305518304005,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2702.4242361934776,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2391.430414177765,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2394.242423228485,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2396.1672857118265,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2409.5913424250725,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2412.281549876728,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2460.6941336871673,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2506.1696081347654,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2509.0162967944975,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2526.5615668595583,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2559.988307398319,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2565.5693615205964,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2606.583714184131,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2661.011786585397,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2662.3037238754036,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2685.4762943942915,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2718.7379370769863,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2734.2934922043028,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2773.783566602603,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2778.7554331089173,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2780.776034667041,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2880.870096040989,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2927.3904738389238,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2957.4367529824603,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3018.2220633111556,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3130.5979364560085,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3192.199227281363,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3191.8459696392015,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3212.2476479565644,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3217.861314715025,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3257.0323943704298,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2033.3152392462894,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2142.6696060835143,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2188.0577723595197,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2230.3520240266653,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2271.906346525715,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2299.07241692302,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2325.5593649740467,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2329.4940920301533,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2422.3949221692747,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2439.9211367991265,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2465.4957082275537,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2467.7422818480663,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2479.8735430907773,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2523.4765967286194,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2526.9815841493314,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2538.6733459109882,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2593.6718243200485,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2609.985861806602,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2623.9716552589184,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2681.1960234842495,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2829.6171768146664,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2118.260899452005,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2183.423082789183,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2332.7246555400334,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2353.326474136919,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2409.608876495646,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2444.152187628321,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2532.287620176874,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2534.114666386585,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2557.6615704021965,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2566.920753599068,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2665.363472581787,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2726.5515852536428,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2736.2866684663704,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2751.0689461623156,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2752.7044668734634,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2783.041784359742,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2805.6715678169767,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2819.5463625053744,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2879.8546809521845,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2913.6941779930494,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2945.040409794648,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2961.395408583747,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2971.31994141697,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2021.0306499931758,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2047.3599185020232,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2102.6944692476663,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2102.647766351486,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2129.9006264617747,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2194.936078927537,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2232.0181958630656,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2272.5562372583818,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2289.189200453963,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2355.9386527165407,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2414.4428578199954,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2426.001721610958,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2472.1909363055565,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2500.9014245581634,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2539.446077040343,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2540.2952136319514,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2569.5623495065784,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 800,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "showTimerFeedback (https://sdemj.github.io/wordcatchcatch/:1862:7) ← useHint (https://sdemj.github.io/wordcatchcatch/:2272:5)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2247.6689483528066,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2273.883441696292,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2298.3809078435197,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2324.723713222552,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2339.191216971154,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2395.259014302081,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2437.2233666150128,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2462.5060639112285,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2492.0436728415875,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2493.7159428976506,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2505.8951603775245,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2563.7092245305944,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2614.095553202505,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2617.040109089628,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2651.1741308410437,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2668.0076872936233,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2692.2177588200334,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2781.4048110471995,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2818.76760830327,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2022.8448805564344,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2030.6998391755228,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2599.279036917518,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2602.4321519783716,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2635.541944350769,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2638.2024754962204,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2733.034409165559,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2746.8472531589755,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2769.3890869393213,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2771.977512468503,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2779.1987571817594,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2860.1796499904763,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2866.730561143544,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2869.233655579399,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2923.8036207309765,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2975.3338688256895,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 2987.1359707373545,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3008.4036993135446,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3009.0435412694783,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3042.7122662350907,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3059.184102484171,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3078.1020965028974,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3120.126943894937,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3289.803609185932,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3313.9081937051897,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3347.24792204614,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3375.4710144006062,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3500.629250361472,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 3536.876550248093,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "spawnConfetti (https://sdemj.github.io/wordcatchcatch/:1918:5) ← showModal (https://sdemj.github.io/wordcatchcatch/:1941:25)",
+          "reloadIndex": 35
+        }
+      ]
+    },
+    {
+      "level": "WARN",
+      "title": "같은 곳에 이벤트가 계속 쌓이고 있음",
+      "count": 1,
+      "items": [
+        {
+          "대상": "div / click",
+          "개수": 115600
+        }
+      ]
+    }
+  ],
+  "previousSegments": [
+    {
+      "reloadIndex": 4,
+      "endedAt": 1788061518998,
+      "minutesInSegment": 0.2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 5,
+      "endedAt": 1788061596031,
+      "minutesInSegment": 1.2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 5900
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 6,
+      "endedAt": 1788061684495,
+      "minutesInSegment": 1.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 10300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 7,
+      "endedAt": 1788062070342,
+      "minutesInSegment": 6.3,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 8,
+      "endedAt": 1788062101625,
+      "minutesInSegment": 0.3,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 9,
+      "endedAt": 1788062115166,
+      "minutesInSegment": 0.2,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 10,
+      "endedAt": 1788062130079,
+      "minutesInSegment": 0.2,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 1100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 11,
+      "endedAt": 1788062174408,
+      "minutesInSegment": 0.7,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 2500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 12,
+      "endedAt": 1788062200278,
+      "minutesInSegment": 0.4,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 2500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 13,
+      "endedAt": 1788062451253,
+      "minutesInSegment": 4.2,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 24200
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 15,
+      "endedAt": 1788062547277,
+      "minutesInSegment": 1.5,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 7500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 16,
+      "endedAt": 1788062875788,
+      "minutesInSegment": 5.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 21700
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 17,
+      "endedAt": 1788062939467,
+      "minutesInSegment": 1,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 7300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 18,
+      "endedAt": 1788062963916,
+      "minutesInSegment": 0.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 600
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 19,
+      "endedAt": 1788063042395,
+      "minutesInSegment": 1.3,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 6900
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 20,
+      "endedAt": 1788063447800,
+      "minutesInSegment": 6.7,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 700
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 21,
+      "endedAt": 1788063531259,
+      "minutesInSegment": 1.4,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 1200
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 22,
+      "endedAt": 1788063554402,
+      "minutesInSegment": 0.3,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 23,
+      "endedAt": 1788063674997,
+      "minutesInSegment": 2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 24,
+      "endedAt": 1788064014952,
+      "minutesInSegment": 5.6,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 25,
+      "endedAt": 1788064053513,
+      "minutesInSegment": 0.6,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 27,
+      "endedAt": 1788064226415,
+      "minutesInSegment": 2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 29,
+      "endedAt": 1788064314800,
+      "minutesInSegment": 0.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 800
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 30,
+      "endedAt": 1788064512335,
+      "minutesInSegment": 3.2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 31,
+      "endedAt": 1788064561503,
+      "minutesInSegment": 0.8,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 2200
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 33,
+      "endedAt": 1788065485218,
+      "minutesInSegment": 14.6,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 700
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    }
+  ],
+  "problemCount": 2
+}

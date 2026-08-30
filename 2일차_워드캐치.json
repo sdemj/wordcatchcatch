@@ -1,0 +1,735 @@
+{
+  "sessionMinutes": 75.7,
+  "reloadCount": 35,
+  "screenNow": "title-screen",
+  "findings": [
+    {
+      "level": "ERR",
+      "title": "화면을 옮긴 뒤에도 예약된 작업이 실행됨",
+      "count": 41,
+      "items": [
+        {
+          "종류": "한번",
+          "예약(ms)": 800,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "showTimerFeedback (https://sdemj.github.io/wordcatchcatch/:1862:7) ← checkWord (https://sdemj.github.io/wordcatchcatch/:2229:13)",
+          "reloadIndex": 7
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 7
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 800,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "showTimerFeedback (https://sdemj.github.io/wordcatchcatch/:1862:7) ← useHint (https://sdemj.github.io/wordcatchcatch/:2272:5)",
+          "reloadIndex": 9
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 9
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 11
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 11
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 800,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "showTimerFeedback (https://sdemj.github.io/wordcatchcatch/:1862:7) ← checkWord (https://sdemj.github.io/wordcatchcatch/:2229:13)",
+          "reloadIndex": 13
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 13
+        },
+        {
+          "종류": "한번",
+          "예약(ms)": 5000,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "title-screen",
+          "위치": "useHint (https://sdemj.github.io/wordcatchcatch/:2288:5) ← HTMLButtonElement.onclick (https://sdemj.github.io/wordcatchcatch/:125",
+          "reloadIndex": 18
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 30
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        },
+        {
+          "종류": "반복",
+          "예약(ms)": 100,
+          "예약한 화면": "game-wrapper",
+          "실행된 화면": "(알 수 없음)",
+          "위치": "startTimer (https://sdemj.github.io/wordcatchcatch/:1810:23) ← resetRound (https://sdemj.github.io/wordcatchcatch/:1804:27)",
+          "reloadIndex": 31
+        }
+      ]
+    }
+  ],
+  "previousSegments": [
+    {
+      "reloadIndex": 4,
+      "endedAt": 1788061518998,
+      "minutesInSegment": 0.2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 5,
+      "endedAt": 1788061596031,
+      "minutesInSegment": 1.2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 5900
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 6,
+      "endedAt": 1788061684495,
+      "minutesInSegment": 1.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 10300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 7,
+      "endedAt": 1788062070342,
+      "minutesInSegment": 6.3,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 8,
+      "endedAt": 1788062101625,
+      "minutesInSegment": 0.3,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 9,
+      "endedAt": 1788062115166,
+      "minutesInSegment": 0.2,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 10,
+      "endedAt": 1788062130079,
+      "minutesInSegment": 0.2,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 1100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 11,
+      "endedAt": 1788062174408,
+      "minutesInSegment": 0.7,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 2500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 12,
+      "endedAt": 1788062200278,
+      "minutesInSegment": 0.4,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 2500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 13,
+      "endedAt": 1788062451253,
+      "minutesInSegment": 4.2,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 24200
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 15,
+      "endedAt": 1788062547277,
+      "minutesInSegment": 1.5,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 7500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 16,
+      "endedAt": 1788062875788,
+      "minutesInSegment": 5.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 21700
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 17,
+      "endedAt": 1788062939467,
+      "minutesInSegment": 1,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 7300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 18,
+      "endedAt": 1788062963916,
+      "minutesInSegment": 0.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 600
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 19,
+      "endedAt": 1788063042395,
+      "minutesInSegment": 1.3,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 6900
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 20,
+      "endedAt": 1788063447800,
+      "minutesInSegment": 6.7,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 700
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 21,
+      "endedAt": 1788063531259,
+      "minutesInSegment": 1.4,
+      "screenAtEnd": "title-screen",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 1200
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 22,
+      "endedAt": 1788063554402,
+      "minutesInSegment": 0.3,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 300
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 23,
+      "endedAt": 1788063674997,
+      "minutesInSegment": 2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 24,
+      "endedAt": 1788064014952,
+      "minutesInSegment": 5.6,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 25,
+      "endedAt": 1788064053513,
+      "minutesInSegment": 0.6,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 500
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 27,
+      "endedAt": 1788064226415,
+      "minutesInSegment": 2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 29,
+      "endedAt": 1788064314800,
+      "minutesInSegment": 0.4,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 800
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 30,
+      "endedAt": 1788064512335,
+      "minutesInSegment": 3.2,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 100
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 31,
+      "endedAt": 1788064561503,
+      "minutesInSegment": 0.8,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 2200
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    },
+    {
+      "reloadIndex": 33,
+      "endedAt": 1788065485218,
+      "minutesInSegment": 14.6,
+      "screenAtEnd": "game-wrapper",
+      "liveIntervals": null,
+      "heavyListeners": [
+        {
+          "대상": "div / click",
+          "개수": 700
+        }
+      ],
+      "nodeGrowth": null,
+      "domLeftovers": null
+    }
+  ],
+  "problemCount": 1
+}
