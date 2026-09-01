@@ -978,7 +978,7 @@ justify-content: flex-start;
 
     /* [추가] intro-container(How to Play 화면)도 상단 물음표(?) 버튼으로 열렸을 때는
        위와 동일하게 하단 버튼 대신 우측 상단 X 버튼만 쓴다. 타이틀 화면 자체의
-       "How to Play" 버튼으로 열었을 때는 기존 닫기/GAME START 버튼을 그대로 유지. */
+       "How to Play" 버튼으로 열었을 때는 기존 닫기/Game Start 버튼을 그대로 유지. */
     .intro-close-x {
       display: none;
       position: absolute;
@@ -1232,7 +1232,7 @@ box-sizing: border-box;
     <img src="0.png" alt="Title Background" class="full-title-bg">
     <div class="title-btn-group">
       <button class="start-btn intro-how-btn" onclick="openHelpFromTitle()">How to Play</button>
-      <button class="start-btn" onclick="clickStartFromTitle()">GAME START</button>
+      <button class="start-btn" onclick="clickStartFromTitle()">Game Start</button>
     </div>
   </div>
 </div>
@@ -1256,7 +1256,7 @@ box-sizing: border-box;
 
     <div class="title-btn-group">
       <button class="start-btn" onclick="hideIntroHelpView()">닫기</button>
-      <button class="start-btn" onclick="startGameFromIntroHelp()">GAME START</button>
+      <button class="start-btn" onclick="startGameFromIntroHelp()">Game Start</button>
     </div>
   </div>
 </div>
@@ -1284,7 +1284,7 @@ box-sizing: border-box;
         <div id="all-btn-area" style="width: 100%; display: flex; justify-content: center; margin-bottom: 5px;"></div>
         <div class="grid-menu" id="subcategory-menu-grid"></div>
         <div class="status-counter" id="live-word-counter">0단어 선택됨</div>
-    <button class="start-btn" onclick="launchGameAfterSelection()">GAME START</button>
+    <button class="start-btn" onclick="launchGameAfterSelection()">Game Start</button>
   </div>
 </div>
 
@@ -1330,9 +1330,13 @@ box-sizing: border-box;
 
   <script>
     /* ================= BACKGROUND MUSIC ================= */
-    // Word Catch는 단체 게임이 아니라 개인 플레이 게임이라, 타이틀 화면부터 실제 퍼즐
-    // 게임 화면까지 화면 전환과 상관없이 BGM이 계속 재생된다.
-    const bgmIntro = document.getElementById('bgm-intro');
+    // Pick the Word와 동일하게, 타이틀/선택 화면과 실제 퍼즐 게임 화면에서 서로 다른 트랙을
+    // 재생한다(intro: fluxsound, game: viacheslavstarostin). 화면 전환 시 playBgm(key)로 전환.
+    const bgmTracks = {
+        intro: document.getElementById('bgm-intro'),
+        game: document.getElementById('bgm-game')
+    };
+    let currentBgmKey = 'intro';
     const MUSIC_MUTE_KEY = 'wordcatch_bgm_muted';
     // [버그 수정] 음소거 상태를 화면 전환과 무관하게 하나의 값으로 관리하고 localStorage에
     // 저장해, 타이틀에서 음소거해도 게임 화면으로 넘어갈 때 다시 켜지지 않도록 한다.
@@ -1340,11 +1344,11 @@ box-sizing: border-box;
         try { return localStorage.getItem(MUSIC_MUTE_KEY) === '1'; } catch (e) { return false; }
     })();
     let audioUnlocked = false;
-    let bgmShouldPlay = false; // 현재 화면이 BGM 재생 대상 화면(타이틀/선택 화면)인지 여부
+    let bgmShouldPlay = false; // 현재 화면이 BGM 재생 대상 화면(타이틀/선택/게임 화면 전체)인지 여부
 
-    function syncBgmAudio() {
-        if (!bgmIntro) return;
-        bgmIntro.muted = !audioUnlocked;
+    function syncBgmAudio(audio) {
+        if (!audio) return;
+        audio.muted = !audioUnlocked;
     }
 
     function updateMusicIcon() {
@@ -1367,17 +1371,28 @@ box-sizing: border-box;
     window.addEventListener('load', updateSfxIcon);
 
     function applyBgmState() {
-        if (!bgmIntro) return;
+        const audio = bgmTracks[currentBgmKey];
+        if (!audio) return;
+
+        // 다른 트랙은 항상 멈춰서 두 곡이 겹쳐 들리지 않게 한다
+        Object.keys(bgmTracks).forEach(k => {
+            if (k !== currentBgmKey && bgmTracks[k] && !bgmTracks[k].paused) bgmTracks[k].pause();
+        });
+
         if (!bgmShouldPlay || bgmMuted) {
-            bgmIntro.pause();
+            audio.pause();
             return;
         }
-        syncBgmAudio();
-        if (bgmIntro.paused) bgmIntro.play().catch(() => {});
+        syncBgmAudio(audio);
+        if (audio.paused) audio.play().catch(() => {});
     }
 
-    // 타이틀/How to Play/대분류/소분류 선택 화면 진입 시 호출
-    function playBgm() {
+    // 화면 전환 시 호출. key: 'intro'(타이틀/How to Play/대분류/소분류 선택) 또는 'game'(실제 퍼즐 게임 화면)
+    function playBgm(key) {
+        if (key && key !== currentBgmKey) {
+            currentBgmKey = key;
+            bgmTracks[key].currentTime = 0;
+        }
         bgmShouldPlay = true;
         applyBgmState();
     }
@@ -1502,6 +1517,9 @@ for (const cat in RAW_CATEGORY_DATA) {
     let pendingResultTimerId = null; // 라운드클리어·게임오버 지연 표시용, 화면 나갈 때 취소 대상
     let pendingUiTimeoutIds = []; // 타이머 피드백·힌트·컨페티 등 화면 나갈 때 취소해야 할 setTimeout id 모음
     let modalHistoryPushed = false; // 팝업이 열려있는 동안 뒤로가기로 닫을 수 있게 history를 쌓았는지 여부
+    // [추가] How to Play 팝업을 실제 게임 화면(game-body)이 아닌 타이틀/대분류/소분류 화면에서 열었을 때는
+    // 닫을 때 게임판(game-header/game-body)을 억지로 띄우거나 라운드 타이머를 되돌리면 안 되므로 기억해둔다.
+    let modalWasOverGameScreen = false;
 
     // [버그 수정] 화면을 옮긴 뒤에도 setTimeout이 실행되던 문제 방지: 위 배열에 기록해뒀다가
     // exitGameToHome/exitGameToSubcategory에서 한꺼번에 취소한다.
@@ -1537,7 +1555,7 @@ function clickStartFromTitle() {
 // How to Play 클릭 시 설명 화면 보여주기 (상단 고정 네비게이션에서 호출될 때는
 // 타이틀 화면뿐 아니라 대분류/소분류 화면에서도 호출될 수 있으므로, 어느 화면에서 왔는지 기억해둔다)
 // [수정] 같은 intro-container를 두 군데서 여는데, 여는 경로에 따라 하단 버튼 구성이 다르다:
-// - 타이틀 화면 자체의 "How to Play" 버튼으로 열면: 기존처럼 닫기/GAME START 버튼
+// - 타이틀 화면 자체의 "How to Play" 버튼으로 열면: 기존처럼 닫기/Game Start 버튼
 // - 상단 고정 네비게이션의 물음표(?) 버튼으로 열면: 우측 상단 X 버튼만 (다른 화면들의 도움말 팝업과 통일)
 let introReturnScreen = "title-screen";
 function openHelpFromTitle(viaNavIcon = false) {
@@ -1773,6 +1791,7 @@ function startGameFromIntroHelp() {
       document.getElementById("game-wrapper").style.display = "flex";
       document.getElementById("game-header").style.display = "flex";
       document.getElementById("game-body").style.display = "flex";
+      playBgm('game');
       resetRound();
     }
 
@@ -1787,7 +1806,7 @@ function startGameFromIntroHelp() {
       document.getElementById("game-header").style.display = "none";
       document.getElementById("game-body").style.display = "none";
       document.getElementById("title-screen").style.display = "flex";
-      playBgm();
+      playBgm('intro');
     }
 
     // 게임 중 '뒤로': 타이머 정지 후 소분류 선택 화면으로 이동
@@ -1801,7 +1820,7 @@ function startGameFromIntroHelp() {
       document.getElementById("game-header").style.display = "none";
       document.getElementById("game-body").style.display = "none";
       document.getElementById("subcategory-container").style.display = "flex";
-      playBgm();
+      playBgm('intro');
     }
 
     /* [추가] 상단 고정 네비게이션(홈/뒤로/앞으로/How to Play) 공용 디스패처
@@ -1864,12 +1883,14 @@ function startGameFromIntroHelp() {
         default: break; // game-body: 다음 단계 없음
       }
     }
+    // [수정] 상단 물음표(?)는 어느 화면에서 누르든 실제 게임 화면에서 누를 때와 동일한
+    // 팝업(openHelp의 간단한 목록형 팝업)을 보여준다. 타이틀 화면 자체의 큰 "How to Play"
+    // 버튼(openHelpFromTitle)은 기존 전체 화면 설명 그대로 유지한다.
     function navHtpGlobal() {
       if (isModalOpen()) { document.getElementById("modal-button").click(); return; }
       const screen = getCurrentScreenId();
-      if (screen === "game-body") { openHelp(); return; }
       if (screen === "intro-container") return; // 이미 How to Play 화면
-      openHelpFromTitle(true);
+      openHelp();
     }
 
     /* ==========================================================================
@@ -2020,9 +2041,11 @@ function showModal(title, isLastRound = false, type = "clear") {
   const modalButton = document.getElementById("modal-button");
   const modalBody = document.getElementById("modal-body");
 
-  if (document.getElementById("intro-container").style.display === "none" &&
-      document.getElementById("category-container").style.display === "none" &&
-      document.getElementById("subcategory-container").style.display === "none") {
+  // [수정] 게임 결과 팝업(clear/gameover)은 항상 실제 게임 화면 위에서만 열리지만, How to Play
+  // 팝업은 이제 타이틀/대분류/소분류 화면에서도 같은 방식으로 열 수 있다. 게임 화면일 때만
+  // game-header/game-body를 숨기고, closeModal()에서도 그때만 다시 보이도록 기억해둔다.
+  modalWasOverGameScreen = getCurrentScreenId() === "game-body";
+  if (modalWasOverGameScreen) {
     document.getElementById("game-header").style.display = "none";
     document.getElementById("game-body").style.display = "none";
   }
@@ -2058,10 +2081,11 @@ function showModal(title, isLastRound = false, type = "clear") {
     
     modalButton.onclick = function() {
       isHelpOpen = false;
+      const shouldResumeTimer = modalWasOverGameScreen;
       closeModal();
-      startTimer(); 
+      if (shouldResumeTimer) startTimer();
     };
-  } 
+  }
   else if (type === "gameover") {
     modalBody.innerHTML = renderResultStats();
     modalBody.style.display = "block";
@@ -2105,8 +2129,12 @@ function showModal(title, isLastRound = false, type = "clear") {
 
     function closeModal() {
       document.getElementById("modal-overlay").style.display = "none";
-document.getElementById("game-header").style.display = "flex";
-  document.getElementById("game-body").style.display = "flex";
+      // [수정] 타이틀/대분류/소분류 화면에서 연 How to Play 팝업은 게임판을 가린 적이 없으므로
+      // 닫을 때도 game-header/game-body를 억지로 띄우지 않는다(showModal에서 실제로 숨겼을 때만 복원).
+      if (modalWasOverGameScreen) {
+        document.getElementById("game-header").style.display = "flex";
+        document.getElementById("game-body").style.display = "flex";
+      }
       isHelpOpen = false; // [수정] 어떤 경로로 닫히든(홈/뒤로 등으로 강제 종료돼도) 힌트가 막히지 않도록 항상 초기화
       if (modalHistoryPushed) {
         modalHistoryPushed = false;
