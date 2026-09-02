@@ -634,6 +634,28 @@ align-items: center;
   padding: 45px 45px;
 }
 
+/* [추가] 실제 게임 화면에서 홈/뒤로가기를 누르면 뜨는 종료 확인 팝업 */
+#exit-confirm-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 40, 65, 0.68);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+.exit-confirm-img {
+  width: 110px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+}
+
 .result-stats {
   display: flex;
   gap: 14px;
@@ -1266,6 +1288,19 @@ box-sizing: border-box;
   </div>
 </div>
 
+<!-- [추가] 실제 게임 화면에서 홈/뒤로가기 버튼을 누르면 뜨는 종료 확인 팝업 -->
+<div id="exit-confirm-overlay" onclick="if (event.target === this) closeExitConfirm();">
+  <div class="modal-content" style="max-width: 440px;">
+    <h3 style="margin: 0;">게임을 종료할까요?</h3>
+    <img src="q.png" alt="" class="exit-confirm-img">
+    <p style="font-size: 1.05rem; font-weight: 700; color: #4a5568; margin: 0; text-align: center;">지금 나가면 풀던 문제가 사라져요.</p>
+    <div style="display: flex; gap: 12px; width: 100%;">
+      <button class="next-btn" style="flex: 1; background: linear-gradient(to bottom, #94a3b8, #64748b); box-shadow: 0 7.5px 0 #475569;" onclick="confirmExitProceed()">나가기</button>
+      <button class="next-btn" style="flex: 1;" onclick="closeExitConfirm()">계속하기</button>
+    </div>
+  </div>
+</div>
+
 <div id="title-screen">
   <div class="title-card">
     <img src="0.jpg" alt="Title Background" class="full-title-bg">
@@ -1639,6 +1674,26 @@ const MAX_ROUND = 3;
     const CIRCUMFERENCE = 2 * Math.PI * 40;
     let lastSecondInt = -1;
     let isHelpOpen = false;
+    // [추가] 실제 게임 화면에서 홈/뒤로가기를 누르면 뜨는 종료 확인 팝업 상태
+    let exitConfirmOpen = false;
+    let pendingExitAction = null;
+    function requestExitConfirm(action) {
+      pendingExitAction = action;
+      exitConfirmOpen = true;
+      document.getElementById('exit-confirm-overlay').style.display = 'flex';
+    }
+    function closeExitConfirm() {
+      document.getElementById('exit-confirm-overlay').style.display = 'none';
+      exitConfirmOpen = false;
+      pendingExitAction = null;
+    }
+    function confirmExitProceed() {
+      document.getElementById('exit-confirm-overlay').style.display = 'none';
+      exitConfirmOpen = false;
+      const action = pendingExitAction;
+      pendingExitAction = null;
+      if (action) action();
+    }
 
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function clickStartFromTitle() {
@@ -1947,7 +2002,7 @@ function startGameFromIntroHelp() {
       const screen = getCurrentScreenId();
       if (screen === "title-screen") return;
       if (screen === "intro-container") { hideIntroHelpView(); return; }
-      if (screen === "game-body") { exitGameToHome(); return; }
+      if (screen === "game-body") { requestExitConfirm(exitGameToHome); return; }
       goHomeFromSelection();
     }
     function navBackGlobal() {
@@ -1962,7 +2017,7 @@ function startGameFromIntroHelp() {
         case "intro-container": hideIntroHelpView(); break;
         case "category-container": goBackFromCategory(); break;
         case "subcategory-container": goBackFromSubcategory(); break;
-        case "game-body": exitGameToSubcategory(); break;
+        case "game-body": requestExitConfirm(exitGameToSubcategory); break;
         default: break; // title-screen: 더 갈 곳이 없음
       }
     }
@@ -2020,7 +2075,7 @@ document.getElementById("round-display").innerHTML = `ROUND <span class="current
       if(timerInterval) clearInterval(timerInterval);
       updateTimerUI();
       timerInterval = setInterval(() => {
-        if (isHelpOpen) return;
+        if (isHelpOpen || exitConfirmOpen) return;
 
         timeLeft -= 0.1;
 
