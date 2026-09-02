@@ -229,6 +229,7 @@ position: relative;
 .intro-box ul {
   list-style: none;
   padding-left: 0;
+  counter-reset: intro-step;
 }
 
 .intro-box li {
@@ -238,11 +239,14 @@ position: relative;
 }
 
 .intro-box li::before {
-  content: "⭐";
+  counter-increment: intro-step;
+  content: counter(intro-step) ".";
 
   position: absolute;
   left: 0;
   top: 1px;
+  font-weight: 900;
+  color: #ff6b9d;
 }
 
 .intro-box b {
