@@ -1288,19 +1288,6 @@ box-sizing: border-box;
   </div>
 </div>
 
-<!-- [추가] 실제 게임 화면에서 홈/뒤로가기 버튼을 누르면 뜨는 종료 확인 팝업 -->
-<div id="exit-confirm-overlay" onclick="if (event.target === this) closeExitConfirm();">
-  <div class="modal-content" style="max-width: 440px;">
-    <h3 style="margin: 0;">게임을 종료할까요?</h3>
-    <img src="q.png" alt="" class="exit-confirm-img">
-    <p style="font-size: 1.05rem; font-weight: 700; color: #4a5568; margin: 0; text-align: center;">지금 나가면 풀던 문제가 사라져요.</p>
-    <div style="display: flex; gap: 12px; width: 100%;">
-      <button class="next-btn" style="flex: 1; background: linear-gradient(to bottom, #94a3b8, #64748b); box-shadow: 0 7.5px 0 #475569;" onclick="confirmExitProceed()">나가기</button>
-      <button class="next-btn" style="flex: 1;" onclick="closeExitConfirm()">계속하기</button>
-    </div>
-  </div>
-</div>
-
 <div id="title-screen">
   <div class="title-card">
     <img src="0.jpg" alt="Title Background" class="full-title-bg">
@@ -1400,6 +1387,21 @@ box-sizing: border-box;
 
   <div id="message"></div>
   <div id="center-feedback" class="center-feedback"></div>
+
+  <!-- [수정] 실제 게임 화면에서 홈/뒤로가기 버튼을 누르면 뜨는 종료 확인 팝업.
+       다른 팝업들과 달리 game-wrapper 밖(형제)에 있으면 게임 화면 위로 뜨지 않는
+       문제가 있어서, game-wrapper 안쪽 마지막 자식으로 옮겨 확실히 위에 오게 한다. -->
+  <div id="exit-confirm-overlay" onclick="if (event.target === this) closeExitConfirm();">
+    <div class="modal-content" style="max-width: 400px; gap: 16px;">
+      <h3 style="margin: 0; font-size: 1.7rem; color: #ff7043;">게임을 종료할까요?</h3>
+      <img src="q.png" alt="" class="exit-confirm-img">
+      <p style="font-size: 1.05rem; font-weight: 700; color: #4a5568; margin: 0; text-align: center;">지금 나가면 풀던 문제가 사라져요.</p>
+      <div style="display: flex; gap: 12px; width: 100%;">
+        <button style="flex: 1; font-size: 1.05rem; font-weight: 800; color: #fff; background: linear-gradient(to bottom, #94a3b8, #64748b); border: none; border-radius: 16px; padding: 12px 0; cursor: pointer; box-shadow: 0 5px 0 #475569;" onclick="confirmExitProceed()">나가기</button>
+        <button style="flex: 1; font-size: 1.05rem; font-weight: 800; color: #fff; background: linear-gradient(to bottom, #ff9a9e, #fecfef); border: none; border-radius: 16px; padding: 12px 0; cursor: pointer; box-shadow: 0 5px 0 #e08588;" onclick="closeExitConfirm()">계속하기</button>
+      </div>
+    </div>
+  </div>
 </div> <!-- /#game-wrapper -->
 
 </div> <!-- /#app-stage -->
