@@ -24,7 +24,7 @@ body, button, input, textarea {
   font-family: 'Hakgyoansim_BoardmarkerR', 'Nanum Gothic', sans-serif;
 }
 
-.intro-title, .challenge-title, .selection-heading, .modal-content h3,
+.intro-title, .challenge-title, .selection-heading, #modal-title,
 .word-box h2, #round-display, .start-btn, .intro-how-btn, .next-btn,
 .menu-box-btn, .modal-button, #modal-button {
   font-family: 'Hakgyoansim_PosterB', 'Nanum Gothic', sans-serif;
@@ -308,7 +308,7 @@ position: relative;
   box-sizing: border-box;
 }
 
-.modal-content h3 {
+#modal-title {
   margin: 0 0 10px 0;
   font-size: 2.5rem;
 }
@@ -678,17 +678,26 @@ overflow-y: auto;
   max-width: 1080px;
 }
 
-    .modal-content h3 { color: #ff7043; font-size: 2.8rem; margin: 0 0 15px; font-weight: 900; text-align: center; }
+    /* [수정] h3 대신 #modal-title로 좁혀서, 인게임 팝업 안쪽에 같이 들어있는 .intro-box h3
+       ("학습목표:" 줄)까지 이 큰 제목 스타일을 덮어쓰지 않게 한다 */
+    #modal-title { color: #ff7043; font-size: 2.8rem; margin: 0 0 15px; font-weight: 900; text-align: center; }
 
-    /* How to Play 팝업 전용: 인트로 화면 How to Play와 동일한 배경/제목 색상 */
+    /* How to Play 팝업 전용: 인트로 화면의 .intro-card와 완전히 동일한 크기/여백/배경이 되도록
+       모든 값을 명시적으로 덮어쓴다 (기본 .modal-content/.modal-wide 값에 기대면 90%/1080px vs
+       92%/1400px, 패딩 25px vs 30px처럼 미세하게 어긋나서 두 팝업이 살짝 달라 보였다) */
     .modal-content.modal-help-style {
+      width: min(92%, 1400px);
+      max-width: min(92%, 1400px);
+      max-height: 94%; /* 기본 .modal-content의 85%보다 여유를 둬서 .intro-card와 동일하게 맞춤 */
+      padding: 30px;
+      gap: 20px; /* 기본 .modal-content는 25px — .intro-card(20px)와 맞춰서 높이 여유를 조금 더 확보 */
       background:
         radial-gradient(circle at top left, #ffe0f3 0%, transparent 30%),
         radial-gradient(circle at top right, #d6f0ff 0%, transparent 30%),
         rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
     }
-    .modal-content.modal-help-style h3 {
+    .modal-content.modal-help-style #modal-title {
       color: #1a2b4a;
       font-size: 3.5rem;
       font-weight: 900;
