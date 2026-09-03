@@ -1013,8 +1013,8 @@ justify-content: flex-start;
       display: flex;
       gap: 10px;
     }
-    #nav-left-group { left: 18px; }
-    #nav-right-group { right: 18px; }
+    #nav-left-group { left: 18px; transform-origin: top left; }
+    #nav-right-group { right: 18px; transform-origin: top right; }
     .nav-icon-btn {
       width: 52px;
       height: 52px;
@@ -2828,6 +2828,15 @@ function resizeGame() {
   const stage = document.getElementById("app-stage");
   const scale = computeStageScale(1200, 800);
   stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+  // 모바일처럼 창이 좁으면 상단 좌/우 버튼 그룹이 화면 가운데서 서로 겹치므로,
+  // 폭이 충분할 때(520px 이상)는 100%, 좁아질수록 최대 35%까지 함께 줄어들도록 축소한다.
+  // (word race / pick the word와 동일한 방식)
+  const navScale = Math.max(0.65, Math.min(1, window.innerWidth / 520));
+  const navLeft = document.getElementById('nav-left-group');
+  const navRight = document.getElementById('nav-right-group');
+  if (navLeft) navLeft.style.transform = `scale(${navScale})`;
+  if (navRight) navRight.style.transform = `scale(${navScale})`;
 }
 
 window.addEventListener("resize", resizeGame);
