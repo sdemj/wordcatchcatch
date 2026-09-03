@@ -742,17 +742,24 @@ overflow-y: auto;
       letter-spacing: 1.25px;
     }
 
-    /* [추가] 성공(라운드클리어/미션컴플리트) vs 실패(타임오버) 팝업 색상 구분 */
+    /* [수정] 성공(라운드클리어/미션컴플리트) vs 실패(타임오버) 팝업 색상 구분 - 성공은 초록 대신
+       게임 전체에서 이미 쓰는 파란 톤으로 통일. h3 셀렉터는 #modal-title(id)보다 우선순위가
+       낮아 실제로는 절대 적용되지 않던 죽은 규칙이었어서, #modal-title을 직접 겨냥하도록 고쳤다
+       (id 개수가 같을 땐 클래스가 더 많은 쪽이 이겨서 #modal-title 단독 규칙보다 우선한다). */
     .modal-content.modal-success {
-      border-color: #66bb6a;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 5px 0 #a5d6a7;
+      border-color: #42a5f5;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 5px 0 #90caf9;
     }
-    .modal-content.modal-success h3 { color: #2e7d32; }
+    .modal-content.modal-success #modal-title { color: #0277bd; }
+    /* [수정] 실패(타임오버) 팝업도 빨강 대신 분홍 계열로 - 색을 새로 고르지 않고 이 게임
+       전체에서 이미 쓰고 있는 핑크 조합(기본 .modal-content 테두리 #ff9a9e, next-btn/종료확인
+       버튼 그라데이션의 옅은 쪽 #fecfef, 선택 상태 강조색 #ff6b9d)을 그대로 재사용해서
+       클리어 팝업(파랑)과 마찬가지로 게임 전체 톤과 통일감이 생기도록 했다. */
     .modal-content.modal-fail {
-      border-color: #ef5350;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 5px 0 #ffab91;
+      border-color: #ff9a9e;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 5px 0 #fecfef;
     }
-    .modal-content.modal-fail h3 { color: #c62828; }
+    .modal-content.modal-fail #modal-title { color: #ff6b9d; }
 
     /* [추가] 라운드 클리어 축하 컨페티 효과 */
     #confetti-container {
@@ -1422,6 +1429,7 @@ window.removeWhiteBackground = function (imgEl, opts) {
       <i class="fa-solid fa-xmark"></i>
     </button>
     <h3 id="modal-title">Round Clear!</h3>
+    <img id="modal-success-img" src="su.png" alt="" style="width:170px;height:auto;object-fit:contain;margin:4px 0;display:none;">
     <div id="modal-body" style="display: none;"></div>
     <button class="next-btn" id="modal-button" onclick="goToNextRound()">Next Round!</button>
   </div>
@@ -2366,6 +2374,9 @@ function showModal(title, isLastRound = false, type = "clear") {
   // [추가] 성공(라운드 클리어/미션 컴플리트)과 실패(타임오버) 팝업을 색상으로 뚜렷하게 구분
   modalContent.classList.toggle("modal-success", type === "clear");
   modalContent.classList.toggle("modal-fail", type === "gameover");
+  // [추가] 라운드를 클리어했을 때(다음 라운드든 마지막 라운드든) 그물로 알파벳을 건져올린
+  // su.png 삽화를 보여준다.
+  document.getElementById("modal-success-img").style.display = (type === "clear") ? "block" : "none";
   if (type === "clear") spawnConfetti();
 
   // [추가] 라운드 하나 클리어(다음 라운드로 이어짐)와 게임이 완전히 끝나는 순간(타임오버/
