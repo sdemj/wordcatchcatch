@@ -2548,20 +2548,87 @@ gridData = Array(rows).fill(null).map(() => Array(cols).fill(null));
           if (canPlace(targetWord, r, c, dr, dc)) {
             for (let i = 0; i < targetWord.length; i++) { gridData[r + dr * i][c + dc * i] = targetWord[i]; }
 
-            wordStartPositions.set(word, { r, c });
+            wordStartPositions.set(word, { r, c, dr, dc });
             placed = true;
           }
           attempts++;
         }
         if (!placed) return false;
       }
-for (let r = 0; r < rows; r++) {
+
+      // [버그 수정] 아래서 빈 칸을 무작위 글자로 채우면, 그 글자들이 우연히 또 다른 자리에
+      // 같은 정답 단어를 만들어낼 수 있다. 그러면 학생이 실제로 그 단어를 정방향으로 정확히
+      // 찾아도(정답 판정은 wordStartPositions에 저장된 "의도한 자리" 하나만 인정하므로) 오답
+      // 처리되는 문제가 생긴다. 이를 막기 위해 실제로 배치된 단어의 칸을 기록해 두고,
+      // 무작위 채우기 후 전체 격자를 재검사해서 의도치 않게 생긴 자리를 다시 뽑는다.
+      const placedCellKeys = new Set();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (gridData[r][c] !== null) placedCellKeys.add(`${r},${c}`);
+        }
+      }
+
+      for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             if (gridData[r][c] === null) {
                 gridData[r][c] = String.fromCharCode(97 + Math.floor(Math.random() * 26));
             }
         }
     }
+
+      const scanDirs = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+      const wordAt = (word, r, c, dr, dc) => {
+        for (let i = 0; i < word.length; i++) {
+          const rr = r + dr * i, cc = c + dc * i;
+          if (rr < 0 || rr >= rows || cc < 0 || cc >= cols) return false;
+          if (gridData[rr][cc] !== word[i]) return false;
+        }
+        return true;
+      };
+      const findOccurrences = (word) => {
+        const res = [];
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            for (const [dr, dc] of scanDirs) {
+              if (wordAt(word, r, c, dr, dc)) res.push({ r, c, dr, dc });
+            }
+          }
+        }
+        return res;
+      };
+
+      const MAX_DEDUP_PASSES = 200;
+      for (let pass = 0; pass < MAX_DEDUP_PASSES; pass++) {
+        let hasDuplicate = false;
+        for (const word of currentWords) {
+          const targetWord = word.toLowerCase();
+          const intended = wordStartPositions.get(word);
+          const extras = findOccurrences(targetWord).filter(o =>
+            !(o.r === intended.r && o.c === intended.c && o.dr === intended.dr && o.dc === intended.dc)
+          );
+          for (const occ of extras) {
+            hasDuplicate = true;
+            let fixed = false;
+            for (let i = 0; i < targetWord.length; i++) {
+              const rr = occ.r + occ.dr * i, cc = occ.c + occ.dc * i;
+              if (placedCellKeys.has(`${rr},${cc}`)) continue;
+              // 채움용(무작위) 칸이므로 다른 글자로 다시 뽑아 우연한 겹침을 깬다.
+              const oldChar = gridData[rr][cc];
+              let newChar = oldChar;
+              while (newChar === oldChar) {
+                newChar = String.fromCharCode(97 + Math.floor(Math.random() * 26));
+              }
+              gridData[rr][cc] = newChar;
+              fixed = true;
+              break;
+            }
+            if (!fixed) return false; // 겹친 자리가 전부 실제 단어 칸이라 고칠 수 없음 - 격자를 통째로 다시 생성
+          }
+        }
+        if (!hasDuplicate) break;
+        if (pass === MAX_DEDUP_PASSES - 1) return false;
+      }
+
     return true;
 }
 
