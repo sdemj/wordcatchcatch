@@ -1562,12 +1562,10 @@ window.removeWhiteBackground = function (imgEl, opts) {
         game: document.getElementById('bgm-game')
     };
     let currentBgmKey = 'intro';
-    const MUSIC_MUTE_KEY = 'wordcatch_bgm_muted';
-    // [버그 수정] 음소거 상태를 화면 전환과 무관하게 하나의 값으로 관리하고 localStorage에
-    // 저장해, 타이틀에서 음소거해도 게임 화면으로 넘어갈 때 다시 켜지지 않도록 한다.
-    let bgmMuted = (function () {
-        try { return localStorage.getItem(MUSIC_MUTE_KEY) === '1'; } catch (e) { return false; }
-    })();
+    // 음소거 상태는 화면 전환과 무관하게 하나의 값으로 관리한다. 여러 사람이 함께 쓰는
+    // 기기라 이전 사용자의 음소거 선택이 남지 않도록 localStorage에는 저장하지 않고,
+    // 새로 열 때마다 항상 기본값(켜짐)으로 시작한다.
+    let bgmMuted = false;
     let audioUnlocked = false;
     let bgmShouldPlay = false; // 현재 화면이 BGM 재생 대상 화면(타이틀/선택/게임 화면 전체)인지 여부
 
@@ -1581,16 +1579,15 @@ window.removeWhiteBackground = function (imgEl, opts) {
         if (icon) icon.className = bgmMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-music';
     }
 
-    /* [추가] 효과음 On/Off - pick the word 게임과 동일하게 배경음악과 별개로 켜고 끔 */
+    /* [추가] 효과음 On/Off - pick the word 게임과 동일하게 배경음악과 별개로 켜고 끔.
+       공용 기기에서 이전 사용자의 선택이 남지 않도록 localStorage에는 저장하지 않는다. */
     let sfxMuted = false;
-    try { sfxMuted = localStorage.getItem('wordcatch_sfx_muted') === '1'; } catch (e) {}
     function updateSfxIcon() {
         const icon = document.getElementById('sfx-toggle-icon');
         if (icon) icon.className = sfxMuted ? 'fa-solid fa-bell-slash' : 'fa-solid fa-bell';
     }
     function toggleSfx() {
         sfxMuted = !sfxMuted;
-        try { localStorage.setItem('wordcatch_sfx_muted', sfxMuted ? '1' : '0'); } catch (e) {}
         updateSfxIcon();
     }
     window.addEventListener('load', updateSfxIcon);
@@ -1624,7 +1621,6 @@ window.removeWhiteBackground = function (imgEl, opts) {
 
     function toggleMusic() {
         bgmMuted = !bgmMuted;
-        try { localStorage.setItem(MUSIC_MUTE_KEY, bgmMuted ? '1' : '0'); } catch (e) {}
         applyBgmState();
         updateMusicIcon();
     }
