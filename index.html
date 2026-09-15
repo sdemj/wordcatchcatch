@@ -1810,7 +1810,7 @@ const MAX_ROUND = 3;
 
     let wordStartPositions = new Map();
     let totalWordsFoundAll = 0, hintsUsedTotal = 0;
-    let gameStartTime = 0;
+    let totalElapsedMs = 0;
     let usedWords = new Set();
 
     const INITIAL_TIME = 240;
@@ -2079,7 +2079,7 @@ function startGameFromIntroHelp() {
       timeLeft = INITIAL_TIME;
       totalWordsFoundAll = 0;
       hintsUsedTotal = 0;
-      gameStartTime = Date.now();
+      totalElapsedMs = 0;
       usedWords.clear();
       document.getElementById("subcategory-container").style.display = "none";
       document.getElementById("game-wrapper").style.display = "flex";
@@ -2200,7 +2200,6 @@ function startGameFromIntroHelp() {
        ========================================================================== */
     function resetRound() {
       closeModal();
-      timeLeft = INITIAL_TIME;
       foundWords.clear();
       foundCells.clear();
       wordStartPositions.clear();
@@ -2231,6 +2230,9 @@ document.getElementById("round-display").innerHTML = `ROUND <span class="current
         if (isHelpOpen || exitConfirmOpen) return;
 
         timeLeft -= 0.1;
+        // [수정] '총 소요 시간'은 이 카운트다운과 같은 틱에서만 함께 늘어나는 하나의 시계로 통일한다.
+        // 정답/오답/힌트로 인한 +20초/-10초/-20초는 여기를 거치지 않으므로 소요 시간에 영향을 주지 않는다.
+        totalElapsedMs += 100;
 
         const timerBox = document.querySelector(".timer-circle-box");
         if (timeLeft < 10 && timeLeft > 0) {
@@ -2291,7 +2293,9 @@ function getTotalPossibleWords() {
 }
 
 function formatElapsedTime() {
-  const elapsedSec = Math.max(0, Math.round((Date.now() - gameStartTime) / 1000));
+  // [수정] 실제 흐른 벽시계 시간이 아니라, 화면 제한 시간과 같은 틱에서만 쌓인 totalElapsedMs를 쓴다.
+  // 이렇게 하면 How to Play/처음으로 확인창/라운드 클리어 창이 떠 있는 동안 두 시계가 함께 멈춘다.
+  const elapsedSec = Math.max(0, Math.round(totalElapsedMs / 1000));
   const m = Math.floor(elapsedSec / 60);
   const s = elapsedSec % 60;
   return `${m}:${s < 10 ? '0' : ''}${s}`;
@@ -2419,7 +2423,7 @@ function showModal(title, isLastRound = false, type = "clear") {
         timeLeft = INITIAL_TIME;
         totalWordsFoundAll = 0;
         hintsUsedTotal = 0;
-        gameStartTime = Date.now();
+        totalElapsedMs = 0;
         usedWords.clear();
         resetRound();
     };
@@ -2434,7 +2438,7 @@ function showModal(title, isLastRound = false, type = "clear") {
           timeLeft = INITIAL_TIME;
           totalWordsFoundAll = 0;
           hintsUsedTotal = 0;
-          gameStartTime = Date.now();
+          totalElapsedMs = 0;
           usedWords.clear();
           resetRound();
       };
@@ -2469,6 +2473,9 @@ function showModal(title, isLastRound = false, type = "clear") {
     function goToNextRound() {
       if (round < MAX_ROUND) {
         round++;
+        // 남은 시간이 4분(INITIAL_TIME) 이상이면 보너스로 쌓인 시간을 다음 라운드로 그대로 넘기고,
+        // 4분 미만이면 다음 라운드를 다시 4분 꽉 채운 상태로 시작한다.
+        timeLeft = Math.max(timeLeft, INITIAL_TIME);
         resetRound();
     } else {
         console.log("마지막 라운드입니다.");
@@ -2820,6 +2827,10 @@ function checkWord() {
                     pendingResultTimerId = setTimeout(() => {
                         playSound('clear');
                         showModal("Round " + round + " Clear!", false, "clear");
+                        // [수정] 클리어 창이 떠 있는 동안 제한 시간이 계속 흘러 Time Over로 바뀌는 문제를
+                        // 막기 위해, 미션 컴플리트 때와 마찬가지로 창을 띄우는 즉시 시계를 멈춘다.
+                        clearInterval(timerInterval);
+                        timerInterval = null;
                     }, 500);
                 }
             }
