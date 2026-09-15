@@ -2473,9 +2473,7 @@ function showModal(title, isLastRound = false, type = "clear") {
     function goToNextRound() {
       if (round < MAX_ROUND) {
         round++;
-        // 남은 시간이 4분(INITIAL_TIME) 이상이면 보너스로 쌓인 시간을 다음 라운드로 그대로 넘기고,
-        // 4분 미만이면 다음 라운드를 다시 4분 꽉 채운 상태로 시작한다.
-        timeLeft = Math.max(timeLeft, INITIAL_TIME);
+        // 라운드별로 시간을 나누지 않고, 게임 시작 시 준 4분(+보너스)을 전체 라운드가 공유해서 이어 쓴다.
         resetRound();
     } else {
         console.log("마지막 라운드입니다.");
