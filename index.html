@@ -1724,48 +1724,48 @@ window.removeWhiteBackground = function (imgEl, opts) {
        있어서, 소분류까지는 아니어도 대분류 단위로는 구분해야 뜻이 안 꼬인다. */
     const WORD_MEANINGS_KO = {
       "숫자·색깔·시간": {
-        one:"하나", two:"둘", three:"셋", four:"넷", five:"다섯", six:"여섯", seven:"일곱", eight:"여덟", nine:"아홉", ten:"열",
-        eleven:"열하나", twelve:"열둘", thirteen:"열셋", fourteen:"열넷", fifteen:"열다섯",
+        one:"숫자 1", two:"숫자 2", three:"숫자 3", four:"숫자 4", five:"숫자 5", six:"숫자 6", seven:"숫자 7", eight:"숫자 8", nine:"숫자 9", ten:"숫자 10",
+        eleven:"숫자 11", twelve:"숫자 12", thirteen:"숫자 13", fourteen:"숫자 14", fifteen:"숫자 15",
         white:"흰색", black:"검은색", red:"빨간색", orange:"주황색", yellow:"노란색", green:"초록색", blue:"파란색", purple:"보라색", brown:"갈색", gray:"회색", pink:"분홍색", color:"색깔", rainbow:"무지개",
-        day:"날/하루", week:"주/일주일", month:"달/월", year:"해/년", morning:"아침", afternoon:"오후", evening:"저녁", night:"밤", time:"시간", today:"오늘", tomorrow:"내일", yesterday:"어제", weekend:"주말", noon:"정오/낮 12시", season:"계절"
+        day:"하루, 일", week:"주, 일주일", month:"달, 월", year:"해, 년", morning:"아침(오전)", afternoon:"오후", evening:"저녁", night:"밤", time:"시간", today:"오늘", tomorrow:"내일", yesterday:"어제", weekend:"주말", noon:"정오(낮 12시)", season:"계절"
       },
       "사람과 동물": {
-        eye:"눈", nose:"코", ear:"귀", mouth:"입", tooth:"이/치아", face:"얼굴", neck:"목", hair:"머리카락", head:"머리", foot:"발", finger:"손가락", leg:"다리", arm:"팔", skin:"피부", hand:"손",
-        mom:"엄마", dad:"아빠", grandma:"할머니", grandpa:"할아버지", sister:"언니/누나/여동생", brother:"형/오빠/남동생", parents:"부모님", uncle:"삼촌", aunt:"이모/고모", cousin:"사촌", baby:"아기", child:"아이", boy:"남자아이", girl:"여자아이", man:"남자",
+        eye:"눈", nose:"코", ear:"귀", mouth:"입", tooth:"치아", face:"얼굴", neck:"목", hair:"머리카락", head:"머리", foot:"발", finger:"손가락", leg:"다리", arm:"팔", skin:"피부", hand:"손",
+        mom:"엄마", dad:"아빠", grandma:"할머니", grandpa:"할아버지", sister:"누나, 언니, 여동생", brother:"형, 오빠, 남동생", parents:"부모님", uncle:"삼촌", aunt:"이모, 고모", cousin:"사촌", baby:"아기", child:"어린이", boy:"남자아이", girl:"여자아이", man:"남자",
         bear:"곰", bird:"새", cat:"고양이", cow:"소", dog:"개", duck:"오리", elephant:"코끼리", fish:"물고기", fox:"여우", frog:"개구리", giraffe:"기린", horse:"말", kangaroo:"캥거루", lion:"사자", monkey:"원숭이"
       },
       "취미·과목·직업": {
-        soccer:"축구", baseball:"야구", basketball:"농구", badminton:"배드민턴", tennis:"테니스", taekwondo:"태권도", swimming:"수영", skating:"스케이트", skiing:"스키", camping:"캠핑", hiking:"등산", drawing:"그림 그리기", painting:"색칠하기", cooking:"요리",
-        cook:"요리사", doctor:"의사", pilot:"조종사", singer:"가수", painter:"화가", nurse:"간호사", teacher:"선생님", actor:"배우", scientist:"과학자", photographer:"사진작가", firefighter:"소방관", writer:"작가", dentist:"치과의사", zookeeper:"동물원 사육사"
+        soccer:"축구", baseball:"야구", basketball:"농구", badminton:"배드민턴", tennis:"테니스", taekwondo:"태권도", swimming:"수영", skating:"스케이트", skiing:"스키", camping:"캠핑", hiking:"등산", drawing:"그림 그리기", painting:"색칠하기", cooking:"요리하기",
+        cook:"요리사", doctor:"의사", pilot:"조종사", singer:"가수", painter:"화가", nurse:"간호사", teacher:"선생님", actor:"배우", scientist:"과학자", photographer:"사진가", firefighter:"소방관", writer:"작가", dentist:"치과의사", zookeeper:"사육사"
       },
       "음식과 음료": {
         apple:"사과", banana:"바나나", grape:"포도", lemon:"레몬", kiwi:"키위", watermelon:"수박", strawberry:"딸기", peach:"복숭아", pear:"배", melon:"멜론", potato:"감자", tomato:"토마토", carrot:"당근", corn:"옥수수", onion:"양파",
-        bread:"빵", rice:"밥/쌀", cake:"케이크", cheese:"치즈", chicken:"치킨/닭고기", chocolate:"초콜릿", cookie:"쿠키", hamburger:"햄버거", pizza:"피자", salad:"샐러드", sandwich:"샌드위치", spaghetti:"스파게티", steak:"스테이크", beef:"소고기", egg:"달걀",
-        water:"물", milk:"우유", juice:"주스", lemonade:"레모네이드", tea:"차", coffee:"커피", sweet:"달콤한", salty:"짠", sour:"신", spicy:"매운", bitter:"쓴", sugar:"설탕", salt:"소금", taste:"맛", delicious:"맛있는"
+        bread:"빵", rice:"쌀, 밥", cake:"케이크", cheese:"치즈", chicken:"닭고기", chocolate:"초콜릿", cookie:"쿠키", hamburger:"햄버거", pizza:"피자", salad:"샐러드", sandwich:"샌드위치", spaghetti:"스파게티", steak:"스테이크", beef:"소고기", egg:"달걀",
+        water:"물", milk:"우유", juice:"주스", lemonade:"레모네이드", tea:"차", coffee:"커피", sweet:"단, 달콤한", salty:"짠, 짭짤한", sour:"신, 시큼한", spicy:"매운, 매콤한", bitter:"쓴, 씁쓸한", sugar:"설탕", salt:"소금", taste:"맛", delicious:"맛있는"
       },
       "국가와 자연": {
-        earth:"지구", flower:"꽃", tree:"나무", leaves:"나뭇잎", forest:"숲", mountain:"산", river:"강", sea:"바다", beach:"해변", lake:"호수", grass:"잔디/풀", sky:"하늘", star:"별", sun:"태양/해", moon:"달",
-        weather:"날씨", cloud:"구름", cloudy:"흐린", sunny:"맑은", raining:"비가 오는", snowing:"눈이 오는", windy:"바람 부는", foggy:"안개 낀", lightning:"번개", storm:"폭풍", snowman:"눈사람", ice:"얼음", snow:"눈", rain:"비", wind:"바람"
+        earth:"지구", flower:"꽃", tree:"나무", leaves:"나뭇잎", forest:"숲", mountain:"산", river:"강", sea:"바다", beach:"해변", lake:"호수", grass:"풀", sky:"하늘", star:"별", sun:"태양", moon:"달",
+        weather:"날씨", cloud:"구름", cloudy:"흐린", sunny:"화창한", raining:"비가 오는", snowing:"눈이 오는", windy:"바람이 부는", foggy:"안개 낀", lightning:"번개", storm:"폭풍", snowman:"눈사람", ice:"얼음", snow:"눈", rain:"비", wind:"바람"
       },
       "장소·교통·방향": {
         bank:"은행", bakery:"빵집", bookstore:"서점", market:"시장", restaurant:"식당", store:"가게", hospital:"병원", library:"도서관", park:"공원", school:"학교", museum:"박물관", airport:"공항", church:"교회",
-        bike:"자전거", bus:"버스", car:"자동차", taxi:"택시", truck:"트럭", train:"기차", subway:"지하철", airplane:"비행기", flight:"비행/항공편", ship:"배", boat:"보트",
-        down:"아래", left:"왼쪽", right:"오른쪽", straight:"곧장/똑바로", front:"앞", back:"뒤", behind:"뒤에", under:"아래에", over:"위에", top:"꼭대기", bottom:"바닥/아래", middle:"가운데", near:"가까이", between:"사이에"
+        bike:"자전거", bus:"버스", car:"자동차", taxi:"택시", truck:"트럭", train:"기차", subway:"지하철", airplane:"비행기", flight:"비행, 항공편", ship:"배", boat:"배",
+        down:"아래", left:"왼쪽", right:"오른쪽", straight:"곧게, 직진", front:"앞", back:"뒤", behind:"뒤에", under:"아래에", over:"위에", top:"맨 위", bottom:"맨 아래", middle:"가운데", near:"가까이에", between:"사이에"
       },
       "물건": {
         textbook:"교과서", book:"책", notebook:"공책", pencil:"연필", eraser:"지우개", ruler:"자", scissors:"가위", crayon:"크레용", board:"칠판", map:"지도", paper:"종이", computer:"컴퓨터", bag:"가방",
-        door:"문", window:"창문", bed:"침대", chair:"의자", desk:"책상", table:"탁자", sofa:"소파", clock:"시계", lamp:"램프", fan:"선풍기", mirror:"거울", sink:"싱크대", stair:"계단", towel:"수건", toothbrush:"칫솔",
-        cap:"모자", hat:"모자", coat:"외투", jacket:"재킷", shirt:"셔츠", sweater:"스웨터", dress:"원피스", skirt:"치마", pants:"바지", hairpin:"머리핀", socks:"양말", shoes:"신발", sunglasses:"선글라스", gloves:"장갑"
+        door:"문", window:"창문", bed:"침대", chair:"의자", desk:"책상", table:"탁자", sofa:"소파", clock:"시계", lamp:"전등, 램프", fan:"선풍기", mirror:"거울", sink:"싱크대, 세면대", stair:"계단", towel:"수건", toothbrush:"칫솔",
+        cap:"모자", hat:"모자", coat:"코트", jacket:"재킷", shirt:"셔츠", sweater:"스웨터", dress:"드레스", skirt:"치마", pants:"바지", hairpin:"머리핀", socks:"양말", shoes:"신발", sunglasses:"선글라스", gloves:"장갑"
       },
       "동작": {
         wash:"씻다", brush:"닦다", eat:"먹다", drink:"마시다", sleep:"자다", open:"열다", close:"닫다", sit:"앉다", stand:"서다", read:"읽다", write:"쓰다", study:"공부하다", clean:"청소하다", make:"만들다",
         go:"가다", come:"오다", run:"달리다", walk:"걷다", jump:"뛰다", fly:"날다", ride:"타다", play:"놀다", dance:"춤추다", move:"움직이다", enter:"들어가다", catch:"잡다", kick:"차다", throw:"던지다", climb:"오르다",
-        talk:"이야기하다", say:"말하다", tell:"말해주다", ask:"물어보다", answer:"대답하다", call:"부르다/전화하다", listen:"듣다", sing:"노래하다", meet:"만나다", visit:"방문하다", give:"주다", thank:"감사하다", welcome:"환영하다", like:"좋아하다", want:"원하다"
+        talk:"이야기하다", say:"말하다", tell:"알려주다", ask:"묻다", answer:"대답하다", call:"부르다, 전화하다", listen:"듣다", sing:"노래 부르다", meet:"만나다", visit:"방문하다", give:"주다", thank:"고마워하다", welcome:"환영하다", like:"좋아하다", want:"원하다"
       },
       "특징과 감정": {
-        big:"큰", small:"작은", large:"커다란", tall:"키가 큰", short:"짧은/키가 작은", long:"긴", slim:"날씬한", fat:"뚱뚱한", thin:"마른", heavy:"무거운", light:"가벼운", strong:"힘센", weak:"약한", straight:"곧은/직모의", curly:"곱슬곱슬한",
-        good:"좋은", bad:"나쁜", kind:"친절한", nice:"착한", brave:"용감한", funny:"재미있는", smart:"똑똑한", quiet:"조용한", honest:"정직한", lazy:"게으른", cool:"멋진", shy:"수줍은",
-        happy:"행복한", sad:"슬픈", angry:"화난", glad:"기쁜", excited:"신난", afraid:"무서운", tired:"피곤한", sleepy:"졸린", hungry:"배고픈", thirsty:"목마른", sick:"아픈", busy:"바쁜", surprised:"놀란"
+        big:"큰", small:"작은", large:"커다란", tall:"키가 큰", short:"짧은", long:"긴", slim:"날씬한", fat:"뚱뚱한", thin:"얇은, 마른", heavy:"무거운", light:"가벼운", strong:"힘이 센", weak:"약한", straight:"곧은", curly:"곱슬곱슬한",
+        good:"좋은", bad:"나쁜", kind:"친절한", nice:"좋은, 멋진", brave:"용감한", funny:"재미있는", smart:"똑똑한", quiet:"조용한", honest:"정직한", lazy:"게으른", cool:"멋진", shy:"수줍음이 많은",
+        happy:"행복한", sad:"슬픈", angry:"화난", glad:"기쁜", excited:"신난", afraid:"두려운", tired:"피곤한", sleepy:"졸린", hungry:"배고픈", thirsty:"목마른", sick:"아픈", busy:"바쁜", surprised:"놀란"
       }
     };
 
