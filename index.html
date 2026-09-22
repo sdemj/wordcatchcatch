@@ -893,6 +893,11 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  /* [추가] title-card/intro-card 등 다른 화면들과 같은 흰 테두리 카드 모양으로 통일 */
+  background: #eaf3fb;
+  border: 6px solid #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
    
 .word-container {
@@ -1239,7 +1244,29 @@ box-sizing: border-box;
   color: #e91e63;
 }
 
+    /* 공통 상단바와 함께: 무대 전체에 깔던 하늘색 바탕을 걷어 낸다.
+       흰 카드만 흐린 배경 위에 떠 보이도록 (박스가 두 겹으로 보이지 않게) */
+    #app-stage.tn-bare #title-screen,
+    #app-stage.tn-bare #intro-container,
+    #app-stage.tn-bare #category-container,
+    #app-stage.tn-bare #subcategory-container { background: transparent; }
+    /* 흰 카드가 무대(1200×800)를 꽉 채우게 — 무대 안 위아래·좌우 여백을 없애서
+       다른 게임의 카드와 같은 높이로 보이게 한다 (게임 화면은 원래 무대를 꽉 채운다) */
+    #app-stage.tn-bare .title-card { width: 100%; height: 100%; max-width: none; aspect-ratio: auto; }
+    #app-stage.tn-bare .intro-card,
+    #app-stage.tn-bare .selection-card { width: 100%; height: 100%; max-height: none; margin: 0; justify-content: center; }
+    /* 카드가 커진 만큼 주제 선택 화면의 제목·버튼도 약 1.3배로 */
+    #app-stage.tn-bare .selection-card { gap: 22px; }
+    #app-stage.tn-bare .selection-heading { font-size: 3.5rem; }
+    #app-stage.tn-bare .grid-menu { grid-template-columns: repeat(3, 340px); gap: 24px; }
+    #app-stage.tn-bare .menu-box-btn { height: 156px; font-size: 1.75rem; border-radius: 30px; }
+    #app-stage.tn-bare .menu-box-btn span { font-size: 1.3rem; margin-top: 6px; }
+    #app-stage.tn-bare .menu-box-btn.full-width { max-width: 1068px; height: 120px; font-size: 1.85rem; }
+    #app-stage.tn-bare .menu-box-btn.full-width span { font-size: 1.3rem; }
+    #app-stage.tn-bare .status-counter { font-size: 1.9rem; padding: 12px 36px; }
+    #app-stage.tn-bare .selection-card .start-btn { font-size: 1.95rem; padding: 19px 54px; }
   </style>
+  <link rel="stylesheet" href="topnav.css">
 </head>
 <body>
 
@@ -1413,6 +1440,7 @@ window.removeWhiteBackground = function (imgEl, opts) {
     <i class="fa-solid fa-expand" id="fullscreen-toggle-icon"></i>
   </button>
 </div>
+<script src="topnav.js" data-backdrop="0.jpg"></script>
 
 <!-- [수정] 인트로~소분류 선택 화면, 실제 게임(game-wrapper), 팝업(컨페티/모달)까지 전부
      하나의 고정 크기 캔버스(#app-stage) 안에 넣어 같은 JS 배율(scale)로 함께 확대/축소되도록
@@ -2877,38 +2905,10 @@ function useHint() {
     }, 5000);
 }
 
-// 캔버스의 디자인 크기(designW x designH)를 현재 창 크기에 맞춰 몇 배로 키우거나
-// 줄여야 하는지 계산한다. 인트로~게임까지 모든 화면과 팝업이 들어있는 #app-stage
-// 하나가 이 배율을 그대로 써서, 창 크기/브라우저 배율이 바뀌면 pick the word처럼
-// 하나의 이미지가 확대·축소되듯 전체가 균일하게 커지고 작아진다.
-function computeStageScale(designW, designH) {
-  const winW = window.innerWidth;
-  // 상단 고정 네비게이션 버튼(52px + 여백)과 겹치지 않도록 사용 가능 높이에서 미리 빼둔다.
-  const NAV_RESERVED = 40;
-  const winH = window.innerHeight - NAV_RESERVED;
-
-  const isPortrait = winH > winW;
-
-  if (isPortrait) {
-    return winW / designW;
-  }
-  // pick the word 게임과 동일한 여백 비율(0.96)을 적용해 화면을 더 꽉 채운다.
-  return Math.min(winW / designW, winH / designH) * 0.96;
-}
-
+// 공통 상단바가 [상단바 + 게임 카드]를 창 가운데 여백을 두고 맞춘다 (무대 1200x800)
+// 무대 안의 흰 카드가 무대를 꽉 채우므로 액자(흰 테두리·그림자)는 두르지 않는다
 function resizeGame() {
-  const stage = document.getElementById("app-stage");
-  const scale = computeStageScale(1200, 800);
-  stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
-
-  // 모바일처럼 창이 좁으면 상단 좌/우 버튼 그룹이 화면 가운데서 서로 겹치므로,
-  // 폭이 충분할 때(520px 이상)는 100%, 좁아질수록 최대 35%까지 함께 줄어들도록 축소한다.
-  // (word race / pick the word와 동일한 방식)
-  const navScale = Math.max(0.65, Math.min(1, window.innerWidth / 520));
-  const navLeft = document.getElementById('nav-left-group');
-  const navRight = document.getElementById('nav-right-group');
-  if (navLeft) navLeft.style.transform = `scale(${navScale})`;
-  if (navRight) navRight.style.transform = `scale(${navScale})`;
+  TopNav.fit(document.getElementById("app-stage"), 1200, 800, { bare: true });
 }
 
 window.addEventListener("resize", resizeGame);
