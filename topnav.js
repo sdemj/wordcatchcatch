@@ -179,6 +179,17 @@
   }
   window.addEventListener('resize', function () { if (!current) release(); });
 
+  // ── 4. 휴대폰 세로 안내창("화면을 가로로 돌려 주세요")이 떠 있는 동안에는 상단바를 숨긴다
+  //    (안내창과 상단바의 z-index 가 같아서, 뒤에 놓인 상단바가 안내창 위로 겹쳐 보였다)
+  var rotateOverlay = document.getElementById('rotate-overlay');
+  if (rotateOverlay) {
+    var syncRotate = function () {
+      bar.style.visibility = rotateOverlay.style.display === 'none' ? '' : 'hidden';
+    };
+    new MutationObserver(syncRotate).observe(rotateOverlay, { attributes: true, attributeFilter: ['style'] });
+    syncRotate();
+  }
+
   window.TopNav = { fit: fit, release: release, buttons: btns, bar: bar };
   release();
 })();
