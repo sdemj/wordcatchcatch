@@ -28,6 +28,37 @@
   var script = document.currentScript;
   var K = 1 / 13.6571, MAX_BAR_W = 1912;
 
+  // ── 0. 화면 확대·축소 막기 (아이패드·갤럭시 탭·휴대폰)
+  //    게임 화면은 TopNav.fit() 이 창 크기에 맞춰 배율을 잡으므로, 손가락으로 확대하면 비율이 틀어진다
+  //    - 안드로이드: viewport 의 maximum-scale / user-scalable 로 막힌다
+  //    - 아이패드(사파리)는 위 설정을 무시하므로 두 손가락 제스처를 직접 막는다
+  //    - 두 번 톡 쳐서 확대되는 것은 touch-action: manipulation 으로 막는다 (빠른 연타는 그대로 된다)
+  var vp = document.querySelector('meta[name="viewport"]');
+  if (!vp) { vp = document.createElement('meta'); vp.name = 'viewport'; document.head.appendChild(vp); }
+  vp.setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover');
+  var noZoomCss = document.createElement('style');
+  noZoomCss.textContent = 'html,body{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:100%;}';
+  document.head.appendChild(noZoomCss);
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(function (t) {
+    document.addEventListener(t, function (e) { e.preventDefault(); }, { passive: false });
+  });
+  document.addEventListener('touchmove', function (e) {
+    if (e.touches.length > 1 || (e.scale !== undefined && e.scale !== 1)) e.preventDefault();
+  }, { passive: false });
+  // 노트북 터치패드 핀치(ctrl+휠)로 확대되는 것도 막는다
+  document.addEventListener('wheel', function (e) { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
+
+  // 창 크기 — 혹시 확대가 되더라도 확대 전(레이아웃) 크기로 계산해 게임판 비율이 흔들리지 않게 한다
+  // (아이패드 사파리는 확대하면 innerWidth/innerHeight 가 같이 줄어든다)
+  function viewW() {
+    var v = window.visualViewport;
+    return v ? Math.round(v.width * v.scale) : window.innerWidth;
+  }
+  function viewH() {
+    var v = window.visualViewport;
+    return v ? Math.round(v.height * v.scale) : window.innerHeight;
+  }
+
   // ── 1. 버튼 7개 찾아 옮기기 (기존 묶음은 게임마다 모양이 달라 세 곳을 차례로 본다)
   var bar = document.getElementById('top-nav-bar');
   var groups = [];
@@ -123,7 +154,7 @@
       opts.insetX : 무대 좌우에서 이만큼(설계 px)은 투명한 자리 — 창 폭 검사에서 뺀다 */
   function fit(stage, dw, dh, opts) {
     opts = opts || {};
-    var W = window.innerWidth, H = window.innerHeight, L = refLayout(W, H);
+    var W = viewW(), H = viewH(), L = refLayout(W, H);
     var ring = opts.bare ? 0 : 6, ix = opts.insetX || 0;           // ring = 카드 흰 테두리(설계 px)
     var ow = dw - 2 * ix + 2 * ring, oh = dh + 2 * ring;
     var s = Math.min(L.cardH / oh, (W - 2 * L.g) / ow);
@@ -142,8 +173,8 @@
       내용은 --tn-space 아래에서 시작 */
   function release() {
     current = null;
-    var L = refLayout(window.innerWidth, window.innerHeight);
-    placeBar((window.innerWidth - L.w) / 2, L.top0, L.w);
+    var W = viewW(), L = refLayout(W, viewH());
+    placeBar((W - L.w) / 2, L.top0, L.w);
     document.documentElement.style.setProperty('--tn-space', (L.top0 + L.h + L.gap) + 'px');
   }
   window.addEventListener('resize', function () { if (!current) release(); });
