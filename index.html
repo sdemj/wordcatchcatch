@@ -2008,6 +2008,19 @@ function startGameFromIntroHelp() {
       launchGameAfterSelection();
     }
 
+ // 소분류 영문 키 → 한글 명칭
+    const SUB_KO_MAP = {
+      "Number": "숫자", "Color": "색깔", "Time & Date": "시간과 날짜",
+      "Body": "몸", "Family & People": "가족과 사람", "Animal": "동물",
+      "Sports & Hobby": "운동과 취미", "Subject & Class": "과목과 수업", "Job": "직업",
+      "Fruit & Vegetable": "과일과 채소", "Meal & Snack": "식사와 간식", "Drink & Taste": "음료와 맛",
+      "Country": "나라", "Nature": "자연", "Weather": "날씨",
+      "Place": "장소", "Transportation": "교통수단", "Direction & Position": "방향과 위치",
+      "School Supplies": "학용품", "Household": "생활용품", "Clothing": "옷",
+      "Daily Action": "일상 동작", "Move & Play": "움직임과 놀이", "Talk & Feel": "말과 감정",
+      "Look": "생김새", "Character": "성격", "Feeling": "기분"
+    };
+
  function selectCategory(category) {
       selectedCategoryName = category;
       document.getElementById("category-container").style.display = "none";
@@ -2040,7 +2053,8 @@ function startGameFromIntroHelp() {
         const btn = document.createElement("button");
         btn.className = "menu-box-btn";
         btn.id = `sub-btn-${subKey}`;
-        btn.innerHTML = `${subKey}<span>(${subData[subKey].length})</span>`;
+        const subKo = SUB_KO_MAP[subKey] || subKey;
+        btn.innerHTML = `${subKo}<span class="eng-sub">${subKey}</span><span>(${subData[subKey].length})</span>`;
         btn.setAttribute("data-tooltip", subData[subKey].join(", "));
         btn.onclick = () => toggleSubcategory(subKey);
         subGrid.appendChild(btn);
