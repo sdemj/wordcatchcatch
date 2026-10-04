@@ -1411,6 +1411,14 @@ window.removeWhiteBackground = function (imgEl, opts) {
 
 <audio id="bgm-intro" src="fluxsound-cheerful-upbeat-kids-486631.mp3" loop preload="none"></audio>
 <audio id="bgm-game" src="viacheslavstarostin-game-gaming-video-game-music-471936.mp3" loop preload="none"></audio>
+<!-- [추가 10/2] 효과음 파일
+     - 라운드/미션 완료: Unjumble Game의 정답.mp3·완료.mp3를 단어 찾음 소리만큼 키운 파일(_크게.wav)
+       (브라우저는 볼륨 1을 넘길 수 없어 파일 자체를 키움. 정답 +6.5dB, 완료 +3.7dB)
+     - 오답: Unjumble Game 오답.mp3 / 타임오버: Ice Cream 게임 실패.mp3 -->
+<audio id="sfx-round-clear" src="정답_크게.wav" preload="auto"></audio>
+<audio id="sfx-mission-complete" src="완료_크게.wav" preload="auto"></audio>
+<audio id="sfx-wrong" src="오답.mp3" preload="auto"></audio>
+<audio id="sfx-gameover" src="실패.mp3" preload="auto"></audio>
 
 <!-- [수정] 상단 네비게이션 - 전체 게임 공통, 위치 고정. pick the word 게임과 동일한 배치/스타일:
      왼쪽: 홈/뒤로/앞으로, 오른쪽: How to Play/효과음/배경음/전체화면 -->
@@ -1589,6 +1597,8 @@ window.removeWhiteBackground = function (imgEl, opts) {
         intro: document.getElementById('bgm-intro'),
         game: document.getElementById('bgm-game')
     };
+    // [수정 10/2] 배경음악이 기본 볼륨(1.0)으로 재생돼 효과음이 묻혔다. 다른 게임들(0.2~0.5)처럼 낮춘다.
+    Object.values(bgmTracks).forEach(a => { if (a) a.volume = 0.35; });
     let currentBgmKey = 'intro';
     // 음소거 상태는 화면 전환과 무관하게 하나의 값으로 관리한다. 여러 사람이 함께 쓰는
     // 기기라 이전 사용자의 음소거 선택이 남지 않도록 localStorage에는 저장하지 않고,
@@ -1898,8 +1908,22 @@ function startGameFromIntroHelp() {
   document.getElementById("intro-container").style.display = "none";
   document.getElementById("category-container").style.display = "flex";
 }
+    // [수정 10/2] 효과음이 다른 게임에 비해 너무 작다는 피드백 반영.
+    // - 합성 효과음 볼륨을 전체적으로 약 3배로 키움(최대 0.9, 1.0을 넘으면 소리가 깨짐)
+    // - 단어를 찾았을 때('correct')는 기존 라운드 클리어용 3음 아르페지오를 사용
+    // - 라운드 클리어·미션 컴플리트·오답·타임오버는 다른 게임과 같은 효과음 파일 사용(위 <audio> 참고)
+    const sfxFiles = { clear: 'sfx-round-clear', complete: 'sfx-mission-complete', wrong: 'sfx-wrong', gameover: 'sfx-gameover' };
     function playSound(type) {
       if (sfxMuted) return;
+
+      if (sfxFiles[type]) {
+        const a = document.getElementById(sfxFiles[type]);
+        if (a) {
+          try { a.volume = 1; a.currentTime = 0; a.play().catch(() => {}); } catch (e) {}
+        }
+        return;
+      }
+
       if (audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
@@ -1910,70 +1934,33 @@ function startGameFromIntroHelp() {
       gain.connect(audioCtx.destination);
 
       if (type === 'correct') {
+        // 단어 찾음: 밝은 3음 상승 아르페지오 (기존 라운드 클리어 효과음)
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
-        osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.1);
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-        osc.start(audioCtx.currentTime);
-        osc.stop(audioCtx.currentTime + 0.3);
-      } else if (type === 'wrong') {
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(180, audioCtx.currentTime);
-        osc.frequency.linearRampToValueAtTime(100, audioCtx.currentTime + 0.2);
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
-        osc.start(audioCtx.currentTime);
-        osc.stop(audioCtx.currentTime + 0.2);
+        const now = audioCtx.currentTime;
+        [523.25, 659.25, 783.99].forEach((freq, i) => {
+          osc.frequency.setValueAtTime(freq, now + i * 0.11);
+        });
+        gain.gain.setValueAtTime(0.9, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.55);
+        osc.start(now);
+        osc.stop(now + 0.55);
       } else if (type === 'hint') {
         osc.type = 'sine';
         const now = audioCtx.currentTime;
         osc.frequency.setValueAtTime(659.25, now);
         osc.frequency.setValueAtTime(880.00, now + 0.08);
         osc.frequency.setValueAtTime(1046.50, now + 0.16);
-        gain.gain.setValueAtTime(0.25, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+        gain.gain.setValueAtTime(0.9, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
         osc.start(now);
-        osc.stop(now + 0.4);
+        osc.stop(now + 0.45);
       } else if (type === 'tick') {
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.45, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.06);
         osc.start(audioCtx.currentTime);
-        osc.stop(audioCtx.currentTime + 0.05);
-      } else if (type === 'clear') {
-        // 라운드 클리어: 밝은 3음 상승 아르페지오
-        osc.type = 'triangle';
-        const now = audioCtx.currentTime;
-        [523.25, 659.25, 783.99].forEach((freq, i) => {
-          osc.frequency.setValueAtTime(freq, now + i * 0.11);
-        });
-        gain.gain.setValueAtTime(0.3, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.55);
-        osc.start(now);
-        osc.stop(now + 0.55);
-      } else if (type === 'complete') {
-        // 미션 컴플리트: 더 화려한 4음 팡파레
-        osc.type = 'triangle';
-        const now = audioCtx.currentTime;
-        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
-          osc.frequency.setValueAtTime(freq, now + i * 0.13);
-        });
-        gain.gain.setValueAtTime(0.35, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.85);
-        osc.start(now);
-        osc.stop(now + 0.85);
-      } else if (type === 'gameover') {
-        // 타임오버: 낮게 떨어지는 아쉬운 톤
-        osc.type = 'sawtooth';
-        const now = audioCtx.currentTime;
-        osc.frequency.setValueAtTime(320, now);
-        osc.frequency.exponentialRampToValueAtTime(80, now + 0.6);
-        gain.gain.setValueAtTime(0.25, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.65);
-        osc.start(now);
-        osc.stop(now + 0.65);
+        osc.stop(audioCtx.currentTime + 0.06);
       }
     }
 
