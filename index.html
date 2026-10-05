@@ -1411,14 +1411,19 @@ window.removeWhiteBackground = function (imgEl, opts) {
 
 <audio id="bgm-intro" src="fluxsound-cheerful-upbeat-kids-486631.mp3" loop preload="none"></audio>
 <audio id="bgm-game" src="viacheslavstarostin-game-gaming-video-game-music-471936.mp3" loop preload="none"></audio>
-<!-- [추가 10/2] 효과음 파일
-     - 라운드/미션 완료: Unjumble Game의 정답.mp3·완료.mp3를 단어 찾음 소리만큼 키운 파일(_크게.wav)
-       (브라우저는 볼륨 1을 넘길 수 없어 파일 자체를 키움. 정답 +6.5dB, 완료 +3.7dB)
-     - 오답: Unjumble Game 오답.mp3 / 타임오버: Ice Cream 게임 실패.mp3 -->
+<!-- [추가 10/2] 효과음 파일 (*_크게.wav: 브라우저는 볼륨 1을 넘길 수 없어 파일 자체를 키움.
+     소리가 깨지지 않도록 피크만 누르는 리미터를 최대 6dB까지 사용)
+     - 단어 찾음·힌트: 예전 합성음(3음 아르페지오)을 파일로 만든 것
+     - 라운드/미션 완료: Unjumble Game 정답.mp3·완료.mp3
+     - 오답: Unjumble Game 오답.mp3 / 타임오버: Ice Cream 게임 실패.mp3
+     - 마지막 10초 카운트다운: 카운트다운.mp3 (syncCountdown 참고) -->
+<audio id="sfx-word-found" src="단어찾음_크게.wav" preload="auto"></audio>
+<audio id="sfx-hint" src="힌트_크게.wav" preload="auto"></audio>
 <audio id="sfx-round-clear" src="정답_크게.wav" preload="auto"></audio>
 <audio id="sfx-mission-complete" src="완료_크게.wav" preload="auto"></audio>
-<audio id="sfx-wrong" src="오답.mp3" preload="auto"></audio>
-<audio id="sfx-gameover" src="실패.mp3" preload="auto"></audio>
+<audio id="sfx-wrong" src="오답_크게.wav" preload="auto"></audio>
+<audio id="sfx-gameover" src="실패_크게.wav" preload="auto"></audio>
+<audio id="sfx-countdown" src="카운트다운_크게.wav" preload="auto"></audio>
 
 <!-- [수정] 상단 네비게이션 - 전체 게임 공통, 위치 고정. pick the word 게임과 동일한 배치/스타일:
      왼쪽: 홈/뒤로/앞으로, 오른쪽: How to Play/효과음/배경음/전체화면 -->
@@ -1597,8 +1602,11 @@ window.removeWhiteBackground = function (imgEl, opts) {
         intro: document.getElementById('bgm-intro'),
         game: document.getElementById('bgm-game')
     };
-    // [수정 10/2] 배경음악이 기본 볼륨(1.0)으로 재생돼 효과음이 묻혔다. 다른 게임들(0.2~0.5)처럼 낮춘다.
-    Object.values(bgmTracks).forEach(a => { if (a) a.volume = 0.35; });
+    // [수정 10/2] 배경음악이 기본 볼륨(1.0)으로 재생돼 효과음이 묻혔다. 이 게임의 배경음악 파일은
+    // 다른 게임 것보다 6~16dB 커서 0.125로 낮춘다(실제 재생 크기 약 -26.4dB, Ice Cream 게임과 같은 수준).
+    // 인트로 곡(fluxsound)은 다른 게임들도 같은 파일을 0.18~1.0으로 틀고 있어 중간값인 Anagram과 같은 0.4로 둔다.
+    if (bgmTracks.game) bgmTracks.game.volume = 0.125;
+    if (bgmTracks.intro) bgmTracks.intro.volume = 0.4;
     let currentBgmKey = 'intro';
     // 음소거 상태는 화면 전환과 무관하게 하나의 값으로 관리한다. 여러 사람이 함께 쓰는
     // 기기라 이전 사용자의 음소거 선택이 남지 않도록 localStorage에는 저장하지 않고,
@@ -1878,7 +1886,6 @@ const MAX_ROUND = 3;
       if (action) action();
     }
 
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function clickStartFromTitle() {
   document.getElementById("title-screen").style.display = "none";
   document.getElementById("category-container").style.display = "flex";
@@ -1909,60 +1916,43 @@ function startGameFromIntroHelp() {
   document.getElementById("category-container").style.display = "flex";
 }
     // [수정 10/2] 효과음이 다른 게임에 비해 너무 작다는 피드백 반영.
-    // - 합성 효과음 볼륨을 전체적으로 약 3배로 키움(최대 0.9, 1.0을 넘으면 소리가 깨짐)
-    // - 단어를 찾았을 때('correct')는 기존 라운드 클리어용 3음 아르페지오를 사용
-    // - 라운드 클리어·미션 컴플리트·오답·타임오버는 다른 게임과 같은 효과음 파일 사용(위 <audio> 참고)
-    const sfxFiles = { clear: 'sfx-round-clear', complete: 'sfx-mission-complete', wrong: 'sfx-wrong', gameover: 'sfx-gameover' };
+    // 모든 효과음을 파일(위 <audio> 참고)로 재생한다. 단어 찾음·힌트도 예전 합성음을 파일로 만들어 씀.
+    // 각 파일은 소리가 깨지지 않는 범위(리미터 최대 6dB)에서 최대한 키운 것(*_크게.wav).
+    const sfxFiles = {
+      correct: 'sfx-word-found', hint: 'sfx-hint',
+      clear: 'sfx-round-clear', complete: 'sfx-mission-complete',
+      wrong: 'sfx-wrong', gameover: 'sfx-gameover'
+    };
     function playSound(type) {
       if (sfxMuted) return;
+      const a = document.getElementById(sfxFiles[type]);
+      if (!a) return;
+      try { a.volume = 1; a.currentTime = 0; a.play().catch(() => {}); } catch (e) {}
+    }
 
-      if (sfxFiles[type]) {
-        const a = document.getElementById(sfxFiles[type]);
-        if (a) {
-          try { a.volume = 1; a.currentTime = 0; a.play().catch(() => {}); } catch (e) {}
-        }
+    // [추가 10/2] 마지막 카운트다운 효과음(카운트다운.mp3, 11초).
+    // 파일 구성: 약 1초 간격 째깍 소리 9번 + 8.85초 지점에 끝소리 1번.
+    // 끝소리가 남은 시간 0초에 맞춰 나도록, 남은 시간이 8.85초 아래로 내려가면 재생하고
+    // 재생 위치를 늘 (8.85 - 남은 시간)에 맞춘다. 그래서 정답(+20초)으로 시간이 늘면 멈추고,
+    // 오답·힌트(-10/-20초)로 갑자기 줄면 그 시점 위치로 건너뛴다.
+    // 도움말·나가기 확인 창으로 시계가 멈췄을 때, 라운드 클리어 등으로 타이머가 꺼졌을 때,
+    // 효과음을 껐을 때는 멈춘다. 타임오버(0초)가 되면 끝소리가 끝까지 울리도록 그대로 둔다.
+    const COUNTDOWN_END = 8.85;
+    function syncCountdown() {
+      const a = document.getElementById('sfx-countdown');
+      if (!a || timeLeft <= 0) return;
+      const running = timerInterval && !isHelpOpen && !exitConfirmOpen && !sfxMuted && timeLeft < COUNTDOWN_END;
+      if (!running) {
+        if (!a.paused) a.pause();
         return;
       }
-
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
+      const want = COUNTDOWN_END - timeLeft;
+      if (Math.abs(a.currentTime - want) > 0.3) {
+        try { a.currentTime = want; } catch (e) {}
       }
-
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      if (type === 'correct') {
-        // 단어 찾음: 밝은 3음 상승 아르페지오 (기존 라운드 클리어 효과음)
-        osc.type = 'triangle';
-        const now = audioCtx.currentTime;
-        [523.25, 659.25, 783.99].forEach((freq, i) => {
-          osc.frequency.setValueAtTime(freq, now + i * 0.11);
-        });
-        gain.gain.setValueAtTime(0.9, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.55);
-        osc.start(now);
-        osc.stop(now + 0.55);
-      } else if (type === 'hint') {
-        osc.type = 'sine';
-        const now = audioCtx.currentTime;
-        osc.frequency.setValueAtTime(659.25, now);
-        osc.frequency.setValueAtTime(880.00, now + 0.08);
-        osc.frequency.setValueAtTime(1046.50, now + 0.16);
-        gain.gain.setValueAtTime(0.9, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
-        osc.start(now);
-        osc.stop(now + 0.45);
-      } else if (type === 'tick') {
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.45, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.06);
-        osc.start(audioCtx.currentTime);
-        osc.stop(audioCtx.currentTime + 0.06);
-      }
+      if (a.paused) a.play().catch(() => {});
     }
+    setInterval(syncCountdown, 100);
 
     function goBackFromCategory() {
       document.getElementById("category-container").style.display = "none";
@@ -2285,12 +2275,7 @@ document.getElementById("round-display").innerHTML = `ROUND <span class="current
         const timerBox = document.querySelector(".timer-circle-box");
         if (timeLeft < 10 && timeLeft > 0) {
           timerBox.classList.add("timer-danger");
-         
-          let currentSecondInt = Math.floor(timeLeft);
-          if (currentSecondInt !== lastSecondInt) {
-            playSound('tick');
-            lastSecondInt = currentSecondInt;
-          }
+          // [수정 10/2] 1초마다 내던 'tick' 합성음 대신 카운트다운.mp3를 재생한다(syncCountdown 참고)
         } else {
           timerBox.classList.remove("timer-danger");
         }
