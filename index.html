@@ -614,6 +614,9 @@ align-items: center;
   align-items: center;
   justify-content: center;
   z-index: 9999;       /* 👈 게임 화면의 그 어떤 요소보다 위에 오도록 설정 */
+  /* [수정] #app-stage 전체를 덮으므로 game-wrapper의 둥근 테두리 바깥 곡선(24px)에 맞춰
+     모서리를 둥글게 해서, 직각 모서리가 테두리 밖으로 삐져나오지 않게 한다 */
+  border-radius: 24px;
 }
 
 /* [추가] 라운드 하나를 클리어했을 때(다음 라운드로 이어짐)는 기존처럼 어두운 반투명
@@ -648,6 +651,9 @@ align-items: center;
   align-items: center;
   justify-content: center;
   z-index: 10001;
+  /* [수정] game-wrapper의 둥근 흰 테두리(반경 24px, 두께 6px) 안쪽 곡선에 맞춰 모서리를 둥글게 해서
+     어두운 배경이 테두리 모서리 밖으로 삐져나오지 않게 한다 */
+  border-radius: 18px;
 }
 .exit-confirm-img {
   width: 150px;
